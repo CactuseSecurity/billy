@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorTable" Version="1.17.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\lib\files\billy.Config.Api\billy.Config.Api.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Report.Filter\billy.Report.Filter.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Report\billy.Report.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Config.File\billy.Config.File.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Logging\billy.Logging.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Mail\billy.Mail.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Recert\billy.Recert.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Api.Client\billy.Api.Client.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Middleware.Client\billy.Middleware.Client.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.DeviceAutoDiscovery\billy.DeviceAutoDiscovery.csproj" />
+  </ItemGroup>
+
+</Project>

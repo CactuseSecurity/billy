@@ -59,13 +59,6 @@
     - csharp
     - ui
 
-- hosts: middlewareserver
-  roles:
-    - { role: sample-auth-data, when: "add_demo_data|bool and not installation_mode == 'uninstall'" }
-  tags:
-    - backend
-  # todo: add a meta dependency on role sample-data
-
 - hosts: frontends
   tasks:
     - name: restart ui service to display new version
@@ -77,12 +70,6 @@
   tags:
     - frontend
     - ui
-
-- hosts: testservers
-  roles:
-    - { role: webhook, when: install_webhook|bool and not installation_mode == 'uninstall' }
-  tags:
-    - test
 
 - hosts: all
   roles:

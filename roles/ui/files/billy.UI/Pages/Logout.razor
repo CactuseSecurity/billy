@@ -1,0 +1,38 @@
+﻿@using billy.Middleware.Client;
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@using billy.Ui.Services
+@using billy.Ui.Auth
+
+@inject ProtectedSessionStorage sessionStorage
+@inject AuthenticationStateProvider AuthService
+@inject NavigationManager NavigationManager
+@inject UserConfig userConfig
+@inject CircuitHandlerService circuitHandler
+@inject ApiConnection apiConnection
+@inject MiddlewareClient middlewareClient
+
+@page "/logout"
+
+<h3>Logout</h3>
+
+@code
+{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        // Dispose unmanaged ressources
+        apiConnection.Dispose();
+        middlewareClient.Dispose();
+
+        // Clear the jwt and deauthenticate
+        await sessionStorage.DeleteAsync("jwt");
+        ((AuthStateProvider)AuthService).Deauthenticate();
+
+        // Write an audit log that the user logged out
+        UiUser user = userConfig.User;
+        Log.WriteAudit($"Logout", $"User \"{user.Name}\" with DN: \"{user.Dn}\" logged out.");
+        circuitHandler.User = null;
+
+        // Navigate to login page and force a reload to clear the current session
+        NavigationManager.NavigateTo("", forceLoad: true);
+    }
+}

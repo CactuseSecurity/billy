@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Haukcode.WkHtmlToPdfDotNet" Version="1.5.86" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\billy.Config.Api\billy.Config.Api.csproj" />
+    <ProjectReference Include="..\billy.Report.Filter\billy.Report.Filter.csproj" />
+    <ProjectReference Include="..\billy.Api.Client\billy.Api.Client.csproj" />
+  </ItemGroup>
+
+</Project>

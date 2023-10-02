@@ -12,18 +12,13 @@ openldap_writer_name: "ldapwriter"
 openldap_writer_dn: "cn={{ openldap_writer_name }},ou=systemuser,ou=user,{{ openldap_path }}"
 openldap_server_domain_name: "{{ product_name }}.internal"
 
-middleware_path_rel: FWO.Middleware.Server
+middleware_path_rel: billy.Middleware.Server
 middleware_server_base_dir: "{{ billy_home }}/middleware/files"
-middleware_server_start_dir: "{{ middleware_server_base_dir }}/FWO.Middleware.Server"
+middleware_server_start_dir: "{{ middleware_server_base_dir }}/billy.Middleware.Server"
 middleware_ldif_dir: "{{ billy_home }}/etc/ldif"
 
 importer_password: not4production
 apache_mw_timeout: 14400
-
-# sample-auth-data vars
-sample_role_purpose: demo
-sample_user1_pw: cactus1
-sample_user2_pw: cactus2
 
 # use static jwt generation test key if set to yes
 # only for testing, not for production environment

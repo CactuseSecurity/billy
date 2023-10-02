@@ -15,9 +15,5 @@ database_groups:
   - billyadmins
 
 database_idempotent_files:
-  - billy-basic-procs.sql
-  - billy-report.sql
-  - billy-views.sql
-  - billy-api-funcs.sql
-  - billy-grants.sql
-  - billy-texts.sql
+  - grants.sql
+  - texts.sql

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IPAddressRange" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+      <ProjectReference Include="..\..\..\lib\files\billy.Api.Client\billy.Api.Client.csproj" />
+  </ItemGroup>
+</Project>

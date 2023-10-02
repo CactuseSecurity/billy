@@ -47,17 +47,17 @@
         owner: "{{ billy_user }}"
         group: "{{ billy_group }}"
       loop:
-        - FWO.Api.Client
-        - FWO.Middleware
-        - FWO.Middleware.Client
-        - FWO.Logging
-        - FWO.Config.Api
-        - FWO.Config.File
-        - FWO.Recert
-        - FWO.Report
-        - FWO.Report.Filter
-        - FWO.DeviceAutoDiscovery
-        - FWO.Mail
+        - billy.Api.Client
+        - billy.Middleware
+        - billy.Middleware.Client
+        - billy.Logging
+        - billy.Config.Api
+        - billy.Config.File
+        - billy.Recert
+        - billy.Report
+        - billy.Report.Filter
+        - billy.DeviceAutoDiscovery
+        - billy.Mail
       tags: [ 'test' ]
 
     - name: finalize handler for datarecovery

@@ -7,11 +7,10 @@
       path_to_script: "{{ database_install_dir }}/sql/creation/{{ item }}"
       as_single_query: "{{ postgresql_query_as_single_query }}"
     loop:
-      - billy-create-tables.sql
-      - billy-create-constraints.sql
-      - billy-create-foreign-keys.sql
-      - billy-create-indices.sql
-      - billy-fill.sql
+      - create-tables.sql
+      - create-foreign-keys.sql
+      - create-indices.sql
+      - fill.sql
     when: installation_mode == "new"
 
   become: true

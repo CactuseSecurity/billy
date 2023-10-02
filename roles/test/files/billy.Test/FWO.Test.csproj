@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Haukcode.WkHtmlToPdfDotNet" Version="1.5.86" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.30.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\lib\files\billy.Report\billy.Report.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Report.Filter\billy.Report.Filter.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Api.Client\billy.Api.Client.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Config.File\billy.Config.File.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Logging\billy.Logging.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.DeviceAutoDiscovery\billy.DeviceAutoDiscovery.csproj" />
+    <ProjectReference Include="..\..\..\lib\files\billy.Middleware.Client\billy.Middleware.Client.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.24" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
+    <PackageReference Include="RestSharp.Serializers.SystemTextJson" Version="106.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\billy.Middleware\billy.Middleware.csproj" />
+    <ProjectReference Include="..\billy.Api.Client\billy.Api.Client.csproj" />
+    <ProjectReference Include="..\billy.Config.File\billy.Config.File.csproj" />
+    <ProjectReference Include="..\billy.Logging\billy.Logging.csproj" />
+  </ItemGroup>
+
+</Project>

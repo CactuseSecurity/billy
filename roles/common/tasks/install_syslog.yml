@@ -69,7 +69,6 @@
       if $programname startswith '{{ product_name }}-importer-api' then action(type="omfile" file="{{ billy_log_dir }}/importer-api.log" template="billy")
       if $programname startswith '{{ product_name }}' and $msg contains "Audit" then action(type="omfile" file="{{ billy_log_dir }}/audit.log" template="billy")
       if $programname startswith '{{ product_name }}' and $msg contains "billyAlert" then action(type="omfile" file="{{ billy_log_dir }}/alert.log" template="billy")
-      if $programname == '{{ product_name }}-webhook' then action(type="omfile" file="{{ billy_log_dir }}/webhook.log" template="billy")
   become: true
 
 - name: edit logrotate
@@ -109,29 +108,11 @@
               endscript
       }
 
-      {{ billy_log_dir }}/importer-legacy.log {
-          compress
-          maxage 7
-          rotate 99
-          maxsize 4096k
-          missingok
-          copytruncate
-          sharedscripts
-              prerotate
-                systemctl stop {{ product_name }}-importer-legacy.service >/dev/null 2>&1
-              endscript
-              postrotate
-                systemctl start {{ product_name }}-importer-legacy.service >/dev/null 2>&1
-              endscript
-      }
-
       {{ billy_log_dir }}/database.log 
       {{ billy_log_dir }}/ldap.log 
       {{ billy_log_dir }}/api.log 
-      {{ billy_log_dir }}/importer-api.log 
       {{ billy_log_dir }}/audit.log 
       {{ billy_log_dir }}/alert.log 
-      {{ billy_log_dir }}/webhook.log 
       {
           compress
           maxage 7

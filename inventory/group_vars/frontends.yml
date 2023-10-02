@@ -3,7 +3,7 @@ ui_port: 5000
 ui_web_port: 443
 ui_app_name: "{{ product_name }}"
 ui_dir: "{{ billy_home }}/ui/files"
-ui_start_dir: "{{ ui_dir }}/FWO.UI"
+ui_start_dir: "{{ ui_dir }}/billy.UI"
 ui_admin_password_file: "{{ billy_secrets_dir }}/ui_admin_pwd"
 # ui_comm_mode valid values: 
 # standard (meaning with http-->https rewrite and websockets), no_ws, allow_http, no_ws_and_allow_http

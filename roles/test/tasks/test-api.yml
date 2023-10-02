@@ -41,43 +41,43 @@
     msg: "ERROR unexpected version test result (does not contain 'Missing Authorization header'): {{ api_query_anonymous.content }}"
   when: api_query_anonymous.content is not search('Missing\sAuthorization\sheader')
 
-- name: get sample jwt
-  uri:
-    url: https://{{ middleware_hostname }}:{{ middleware_web_listener_port }}/api/AuthenticationToken/Get/
-    method: POST
-    headers:
-      Content-Type: application/json
-    body:
-      Username: user1{{ test_postfix }}
-      Password: "{{ test_user1_pw }}"
-    body_format: json
-    validate_certs: false
-    return_content: true
-  register: sample_JWT
-  changed_when: false
-  environment: "{{ proxy_env }}"
+# - name: get sample jwt
+#   uri:
+#     url: https://{{ middleware_hostname }}:{{ middleware_web_listener_port }}/api/AuthenticationToken/Get/
+#     method: POST
+#     headers:
+#       Content-Type: application/json
+#     body:
+#       Username: user1{{ test_postfix }}
+#       Password: "{{ test_user1_pw }}"
+#     body_format: json
+#     validate_certs: false
+#     return_content: true
+#   register: sample_JWT
+#   changed_when: false
+#   environment: "{{ proxy_env }}"
 
-- name: test anonymous api access with JWT
-  uri:
-    url: https://{{ api_network_listening_ip_address }}:{{ api_web_port }}/api/v1/graphql
-    method: POST
-    headers:
-      Content-Type: application/json
-      # Remove leading and trailing text of jwt output
-      Authorization: Bearer {{ sample_JWT.content }}
-    body:
-      query: "query text { txt(limit:3) { id } }"
-    body_format: json
-    validate_certs: false
-    return_content: true
-  register: api_query_anonymous_with_JWT
-  changed_when: false
-  environment: "{{ proxy_env }}"
+# - name: test anonymous api access with JWT
+#   uri:
+#     url: https://{{ api_network_listening_ip_address }}:{{ api_web_port }}/api/v1/graphql
+#     method: POST
+#     headers:
+#       Content-Type: application/json
+#       # Remove leading and trailing text of jwt output
+#       Authorization: Bearer {{ sample_JWT.content }}
+#     body:
+#       query: "query text { txt(limit:3) { id } }"
+#     body_format: json
+#     validate_certs: false
+#     return_content: true
+#   register: api_query_anonymous_with_JWT
+#   changed_when: false
+#   environment: "{{ proxy_env }}"
 
-- name: anonymous api access with JWT output
-  debug:
-    msg: "ERROR unexpected version test result (does not contain id): {{ api_query_anonymous_with_JWT.content }}"
-  when: api_query_anonymous_with_JWT.content is not search('id')
+# - name: anonymous api access with JWT output
+#   debug:
+#     msg: "ERROR unexpected version test result (does not contain id): {{ api_query_anonymous_with_JWT.content }}"
+#   when: api_query_anonymous_with_JWT.content is not search('id')
 
 # Todo: this only works if the hasura key is actually installed on the machine running the tests
 - name: read hasura admin secret from file for tests

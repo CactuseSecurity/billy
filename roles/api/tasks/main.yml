@@ -55,24 +55,6 @@
   import_tasks: run-upgrades.yml
   when: "installation_mode == 'upgrade'"
 
-- name: copy billy config export and import scripts
-  copy:
-    src: scripts
-    dest: "{{ billy_home }}"
-    mode: "0755"
-    owner: "{{ billy_user}}"
-    group: "{{ billy_user}}"
-  become: true
-
-- name: copy fwo_api.py for scripting from importer
-  copy:
-    src: roles/importer/files/importer/fwo_api.py
-    dest: "{{ billy_home }}/scripts/fwo_api.py"
-    mode: "0644"
-    owner: "{{ billy_user}}"
-    group: "{{ billy_user}}"
-  become: true
-
 - name: api create documentation
   import_tasks: api-create-docu.yml
   when: api_docu | bool

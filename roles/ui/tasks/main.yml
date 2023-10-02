@@ -40,7 +40,7 @@
         owner: "{{ billy_user }}"
         group: "{{ billy_group }}"
       loop:
-        - FWO.UI
+        - billy.UI
       tags: [ 'test' ]
 
   become: true

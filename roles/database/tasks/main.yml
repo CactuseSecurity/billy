@@ -113,7 +113,6 @@
     - name: copy database files to backend target
       copy: src="{{ item }}" dest="{{ database_install_dir }}" owner="{{ billy_user }}" group="{{ billy_user }}"
       loop:
-        - csv
         - sql        
       tags: [ 'test' ]
 
@@ -145,12 +144,7 @@
   when: installation_mode == "upgrade"
 
 - name: (re)define functions and views
-  include_tasks: recreate-functions-and-views-ansible-pre2.10.yml
-  when: ansible_version.full is version('2.10', '<')
-
-- name: (re)define functions and views
-  include_tasks: recreate-functions-and-views-ansible-2.10.yml
-  when: ansible_version.full is version('2.10', '>=')
+  include_tasks: recreate-functions-and-views.yml
 
 - name: install pg test packages
   package:

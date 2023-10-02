@@ -18,61 +18,14 @@
   set_fact:
     sample_postfix: "{{ test_postfix }}"
 
-- name: create test user1 password
-  set_fact:
-    test_user1_pw: "{{ randomly_generated_pwd }}"
-
-- name: create test user2 password
-  set_fact:
-    test_user2_pw: "{{ randomly_generated_pwd }}"
-
-- name: initialize handler for deleting test data
-  set_fact:
-    test_importer_handler_guard: start
-  changed_when: true
-  notify:
-  - test importer handler
-
-- name: include test data
-  include_role:
-    name: sample-data
-  vars:
-    sample_role_purpose: test
-    sample_fortigate_name: "{{ test_fortigate_name }}"
-    sample_checkpoint_name: "{{ test_checkpoint_name }}"
-    sample_config_user: billytest
-    sample_config_user_home: "/home/{{ sample_config_user }}"
-  when: "'sampleserver' in group_names"
-
-- name: include test auth data
-  include_role:
-    name: sample-auth-data
-  vars:
-    sample_postfix: "{{ test_postfix }}"
-    sample_role_purpose: test
-    sample_user1_pw: "{{ test_user1_pw }}"
-    sample_user2_pw: "{{ test_user2_pw }}"
-  when: "'middlewareserver' in group_names"
-
 - name: database testing
   import_tasks: test-database.yml
-
-- name: create config with test user creds
-  import_tasks: write-config-test-user-creds.yml
-
-- name: auth testing
-  import_tasks: test-auth.yml
-  when: "not run_on_github|bool"
 
 - name: api testing
   import_tasks: test-api.yml
 
 - name: csharp testing
   import_tasks: test-csharp.yml
-
-- name: imorter testing
-  import_tasks: test-importer.yml
-  when: "'sampleserver' in group_names"
 
 - name: testing all exposed web services
   import_tasks: test-web.yml

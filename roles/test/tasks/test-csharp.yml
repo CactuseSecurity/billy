@@ -1,7 +1,7 @@
 
 - name: copy test files to frontend target
   copy:
-    src: FWO.Test
+    src: billy.Test
     dest: "{{ test_dir }}/csharp"
     owner: "{{ billy_user }}"
     group: "{{ billy_group }}"

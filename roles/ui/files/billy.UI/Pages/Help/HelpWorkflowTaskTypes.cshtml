@@ -1,0 +1,28 @@
+﻿@page "/help/workflow/tasktypes"
+@model billy.Ui.Pages.Help.MainModel
+@{
+    Layout = "HelpLayout";
+}
+@section sidebar{
+    @{ 
+        await Html.RenderPartialAsync("HelpWorkflowSidebar.cshtml"); 
+    }
+}
+@using billy.Config.Api
+@inject UserConfig userConfig
+
+<div class="p-2">
+    <h3>@(userConfig.GetText("task_types"))</h3>
+    @(Html.Raw(userConfig.GetText("H8201")))
+    <ul>
+        <li>
+            @(Html.Raw(userConfig.GetText("H8211")))
+        </li>
+        <li>
+            @(Html.Raw(userConfig.GetText("H8212")))
+        </li>
+        <li>
+            @(Html.Raw(userConfig.GetText("H8213")))
+        </li>
+    </ul>
+</div>

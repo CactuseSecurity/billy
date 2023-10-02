@@ -21,6 +21,7 @@ api_hostname: "{{  groups['apiserver'].0 }}"
 installation_mode: new
 install_syslog: true
 run_on_github: false
+api_docu: false
 force_install: false
 
 ### operating system settings
@@ -118,8 +119,8 @@ ldap_syslog_id: slapd
 api_log_level: info
 billy_log_dir: "/var/log/{{ product_name }}"
 billy_log_lock_dir: "/var/{{ product_name }}/lock"
-billy_mw_lockfile: "{{ billy_log_lock_dir }}/FWO.Middleware.Server_log.lock"
-billy_ui_lockfile: "{{ billy_log_lock_dir }}/FWO.Ui_log.lock"
+billy_mw_lockfile: "{{ billy_log_lock_dir }}/billy.Middleware.Server_log.lock"
+billy_ui_lockfile: "{{ billy_log_lock_dir }}/billy.Ui_log.lock"
 
 ### apache: both package and dir name (needed both on ui and api hosts):
 webserver_package_name: apache2
@@ -138,7 +139,7 @@ test_packages:
   - curl
 
 test_dir: "{{ billy_home }}/test"
-csharp_test_start_dir: "{{ billy_home }}/test/csharp/FWO.Test"
+csharp_test_start_dir: "{{ billy_home }}/test/csharp/billy.Test"
 
 # make sure lib role is only run once per host to save time
 # set initially to false

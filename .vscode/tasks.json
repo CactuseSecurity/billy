@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/roles/middleware/files/FWO.Middleware.Server/FWO.Middleware.Server.csproj",
+                "${workspaceFolder}/roles/middleware/files/billy.Middleware.Server/billy.Middleware.Server.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/roles/middleware/files/FWO.Middleware.Server/FWO.Middleware.Server.csproj",
+                "${workspaceFolder}/roles/middleware/files/billy.Middleware.Server/billy.Middleware.Server.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -31,7 +31,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/roles/test/files/FWO.Test/FWO.Test.csproj",
+                "${workspaceFolder}/roles/test/files/billy.Test/billy.Test.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -43,7 +43,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/roles/ui/files/FWO.UI/FWO.Ui.csproj",
+                "${workspaceFolder}/roles/ui/files/billy.UI/billy.Ui.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -56,7 +56,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/roles/middleware/files/FWO.Middleware.Server/FWO.Middleware.Server.csproj",
+                "${workspaceFolder}/roles/middleware/files/billy.Middleware.Server/billy.Middleware.Server.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
