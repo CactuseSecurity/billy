@@ -14,21 +14,21 @@
 - cp ssh pub key to user's authorized_keys on repo server
 - get repo from git:
 ~~~console
-  github: git clone git@github.com:CactuseSecurity/firewall-orchestrator.git
+  github: git clone git@github.com:CactuseSecurity/billy.git
 ~~~
-- install product:see <https://github.com/CactuseSecurity/firewall-orchestrator/blob/master/documentation/installer/server-install.md>
+- install product:see <https://github.com/CactuseSecurity/billy/blob/master/documentation/installer/server-install.md>
 - allow for disk space triple the size of the DB (e.g. 500 GB for a 140 GB DB) - especially needed for the vacuum step at the end
 - restore db backup:
 ~~~console
-psql -c "create database fworchdb"
-psql -d fworchdb -f "database-dump"
+psql -c "create database billydb"
+psql -d billydb -f "database-dump"
 ~~~
 ### Optimization
 
 - allow for disk space triple the size of the DB (e.g. 500 GB for a 140 GB DB) - especially needed for the vacuum step at the end
-- transform database tables to auto cascade thru all tables when deleting unwanted managements: see database/sql/fworch-change-to-delete-cascade.sql
+- transform database tables to auto cascade thru all tables when deleting unwanted managements: see database/sql/billy-change-to-delete-cascade.sql
 - start this shell script as a dbadmin to remove all unwanted managements: see scripts/remove-2-year-old-devices.sh
-- stop all db activity before the next command: time psql -d fworchdb -c "vacuum full verbose"
+- stop all db activity before the next command: time psql -d billydb -c "vacuum full verbose"
 
 ### wait for connection termination
 
@@ -44,8 +44,8 @@ AND pid <> pg_backend_pid();
 ```
 ...$ sudo su - postgres
 ...$ psql -U postgres
-postgres-# \c fworchdb
-fworchdb-# \dt
-fworchdb-# \x
-fworchdb-# SELECT * FROM management;
+postgres-# \c billydb
+billydb-# \dt
+billydb-# \x
+billydb-# SELECT * FROM management;
 ```

@@ -9,7 +9,7 @@
 
 - name: delete test user cred config file
   file:
-    path: "{{ fworch_secrets_dir }}/TestUserCreds.json"
+    path: "{{ billy_secrets_dir }}/TestUserCreds.json"
     state: absent
   become: true
   listen: "test importer handler"
@@ -17,7 +17,7 @@
 - block:
   - name: delete test fortinet gateway
     postgresql_query:
-      db: "{{ fworch_db_name }}"
+      db: "{{ billy_db_name }}"
       query: >
         DO $do$ BEGIN 
         DELETE FROM device WHERE dev_name='{{ test_fortigate_name }}'; 
@@ -26,7 +26,7 @@
 
   - name: delete test fortinet management
     postgresql_query:
-      db: "{{ fworch_db_name }}"
+      db: "{{ billy_db_name }}"
       query: >
         DO $do$ BEGIN 
         DELETE FROM management WHERE mgm_name='{{ test_fortigate_name }}'; 
@@ -35,7 +35,7 @@
 
   - name: delete test checkpoint R8x credentials cascading to deletion of mgmt and gw 
     postgresql_query:
-      db: "{{ fworch_db_name }}"
+      db: "{{ billy_db_name }}"
       query: >
         DO $do$ BEGIN 
         DELETE FROM import_credential WHERE credential_name='{{ test_credential_name }}'; 
@@ -44,7 +44,7 @@
 
   - name: delete tenant tenant1
     postgresql_query:
-      db: "{{ fworch_db_name }}"
+      db: "{{ billy_db_name }}"
       query: >
         DO $do$ BEGIN 
         DELETE FROM tenant WHERE tenant_name='tenant1{{ sample_postfix }}'; 
@@ -53,7 +53,7 @@
 
   # - name: delete devices for tenant tenant1
   #   postgresql_query:
-  #     db: "{{ fworch_db_name }}"
+  #     db: "{{ billy_db_name }}"
   #     query: >
   #       DO $do$ BEGIN 
   #       DELETE FROM tenant_to_device WHERE tenant_id=(SELECT tenant_id FROM tenant WHERE tenant_name='tenant1{{ sample_postfix }}'); 
@@ -62,7 +62,7 @@
 
   - name: delete tenant tenant2
     postgresql_query:
-      db: "{{ fworch_db_name }}"
+      db: "{{ billy_db_name }}"
       query: >
         DO $do$ BEGIN 
         DELETE FROM tenant WHERE tenant_name='tenant2{{ sample_postfix }}'; 

@@ -81,7 +81,7 @@ namespace FWO.Middleware.Controllers
         /// AdminUsername (required) - Example: "admin" &#xA;
         /// AdminPassword (required) - Example: "password" &#xA;
         /// Lifetime (optional) - Example: "365.12:02:00" ("days.hours:minutes:seconds") &#xA;
-        /// TargetUserDn OR TargetUserName (required) - Example: "uid=demo_user,ou=tenant0,ou=operator,ou=user,dc=fworch,dc=internal" OR "demo_user" 
+        /// TargetUserDn OR TargetUserName (required) - Example: "uid=demo_user,ou=tenant0,ou=operator,ou=user,dc=billy,dc=internal" OR "demo_user" 
         /// </remarks>
         /// <param name="parameters">Admin Credentials, Lifetime, User</param>
         /// <returns>User jwt, if credentials are vaild.</returns>

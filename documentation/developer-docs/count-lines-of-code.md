@@ -8,7 +8,7 @@ chmod 755 cloc-fwo.sh
 date
     Wed Dec  9 18:22:59 UTC 2020
 
-./cloc-fwo.sh ssh://git@github.com/tpurschke/firewall-orchestrator.git
+./cloc-fwo.sh ssh://git@github.com/tpurschke/billy.git
     Cloning into 'temp-linecount-repo'...
     remote: Enumerating objects: 872, done.
     remote: Counting objects: 100% (872/872), done.
@@ -50,7 +50,7 @@ date
     -------------------------------------------------------------------------------
 tim@acantha:~/dev/tmp$ date
 Wed 30 Jun 2021 05:11:49 PM CEST
-tim@acantha:~/dev/tmp$ cloc-fwo.sh https://github.com/CactuseSecurity/firewall-orchestrator.git
+tim@acantha:~/dev/tmp$ cloc-fwo.sh https://github.com/CactuseSecurity/billy.git
 Cloning into 'temp-linecount-repo'...
 remote: Enumerating objects: 904, done.
 remote: Counting objects: 100% (904/904), done.

@@ -25,7 +25,7 @@ namespace FWO.Test
           ""api_hasura_jwt_alg"": ""RS256"",
           ""api_uri"": ""https://127.0.0.1:9443/api/v1/graphqlo/"",
           ""dotnet_mode"": ""Release"",
-          ""fworch_home"": ""/usr/local/fworch"",
+          ""billy_home"": ""/usr/local/billy"",
           ""middleware_native_uri"": ""http://127.0.0.3:8880/"",
           ""middleware_uri"": ""http://127.0.0.1:8880/"",
           ""product_version"": ""500""
@@ -35,7 +35,7 @@ namespace FWO.Test
           ""api_hasura_jwt_alg"" = RS256,
           api_uri ! ""https://127.0.0.1:9443/api/v1/graphqlo/"",
           ""dotnet_mode"": ""Release""
-          123 : ""/usr/local/fworch""
+          123 : ""/usr/local/billy""
           ""middleware_native_uri"": ""http://127.0.0.3:8880/"",
           ""middleware_uri"": ""http://127.0.0.1:8880/"",
           ""product_version"": ""5.1""
@@ -44,7 +44,7 @@ namespace FWO.Test
         private const string missingValueConfigFile = @"{
           ""api_hasura_jwt_alg"": ""RS256"",
           ""dotnet_mode"": ""Release"",
-          ""fworch_home"": ""/usr/local/fworch"",
+          ""billy_home"": ""/usr/local/billy"",
           ""middleware_native_uri"": ""http://127.0.0.3:8880/"",
           ""product_version"": ""500""
         }";

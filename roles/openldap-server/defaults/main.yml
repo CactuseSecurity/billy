@@ -21,7 +21,7 @@ openldap_server_email_address: "{{ product_name }}@cactus.de"
 openldap_server_enable_ssl: true
 
 #The path to the pw dir
-fworch_secrets_dir: /tmp
+billy_secrets_dir: /tmp
 
 #The current ansible user
-fworch_user: openldap
+billy_user: openldap

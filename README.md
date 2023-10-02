@@ -1,6 +1,4 @@
-# ![FWO_logo-40px](https://user-images.githubusercontent.com/19877770/123625365-fc10ca80-d80f-11eb-80bf-0a858149b1d9.png) Firewall Orchestrator
-
-![Build passing](https://github.com/CactuseSecurity/firewall-orchestrator/workflows/Build/badge.svg)
+![Build passing](https://github.com/CactuseSecurity/billy/workflows/Build/badge.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Open Source Love svg1](https://github.com/ellerbrock/open-source-badges/blob/master/badges/open-source-v1/open-source.svg)](https://github.com/ellerbrock/open-source-badges/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -12,7 +10,7 @@
 - Use the built-in GraphQL API to integrate with your existing infrastructure (Directory Service, ITSM, IPAM, ...)
 
 <b>Reporting Demo:</b>
-![fwo-demo-reporting-vsmall](https://github.com/CactuseSecurity/firewall-orchestrator/assets/19877770/f9ffe37f-b059-44cf-b056-30a8f3e008a6)
+![fwo-demo-reporting-vsmall](https://github.com/CactuseSecurity/billy/assets/19877770/f9ffe37f-b059-44cf-b056-30a8f3e008a6)
 
 
 <b>Further Demo:</b> if you want to see what it looks like in advance, visit <https://fwodemo.cactus.de> (user: test, password: drive2).

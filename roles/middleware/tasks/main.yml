@@ -10,35 +10,35 @@
 
   - name: check for middleware dir
     stat:
-      path: "{{ fworch_home }}/middleware"
+      path: "{{ billy_home }}/middleware"
     register: middleware_dir_check
 
   - name: backup middleware dir
     synchronize:
-      src: "{{ fworch_home }}/middleware"
-      dest: "{{ fworch_home }}/backup_middleware"
+      src: "{{ billy_home }}/middleware"
+      dest: "{{ billy_home }}/backup_middleware"
     delegate_to: "{{ inventory_hostname }}"
     when: middleware_dir_check.stat.exists and installation_mode == "upgrade"
 
   - name: remove middleware dir
     file:
       state: absent
-      path: "{{ fworch_home }}/middleware"
+      path: "{{ billy_home }}/middleware"
     when: installation_mode == "upgrade"
 
   - name: create middleware directory
     file:
       dest: "{{ middleware_server_base_dir }}"
       state: directory
-      owner: "{{ fworch_user }}"
-      group: "{{ fworch_group }}"
+      owner: "{{ billy_user }}"
+      group: "{{ billy_group }}"
 
   - name: copy middleware module files to middlewareserver
     copy:
       src: "{{ middleware_path_rel }}"
       dest: "{{ middleware_server_base_dir }}"
-      owner: "{{ fworch_user }}"
-      group: "{{ fworch_group }}"
+      owner: "{{ billy_user }}"
+      group: "{{ billy_group }}"
     tags: [ 'test' ]
 
   - name: install python3-openssl for openssl key generation and unprivileged user
@@ -70,12 +70,12 @@
       - python3-pyldap
   become: true
 
-- name: make sure {{ fworch_secrets_dir }} exists
+- name: make sure {{ billy_secrets_dir }} exists
   file:
-    path: "{{ fworch_secrets_dir }}"
+    path: "{{ billy_secrets_dir }}"
     state: directory
-    owner: "{{ fworch_user }}"
-    group: "{{ fworch_group }}"
+    owner: "{{ billy_user }}"
+    group: "{{ billy_group }}"
     mode: "0700"
   become: true
 
@@ -94,8 +94,8 @@
     content: "{{ admin_password }}\n"
     dest: "{{ ui_admin_password_file }}"
     mode: '0600'
-    owner: "{{ fworch_user }}"
-    group: "{{ fworch_group }}"
+    owner: "{{ billy_user }}"
+    group: "{{ billy_group }}"
   become: true
   when: installation_mode == 'new'
 
@@ -118,8 +118,8 @@
     content: "{{ importer_password }}\n"
     dest: "{{ importer_password_file }}"
     mode: '0600'
-    owner: "{{ fworch_user }}"
-    group: "{{ fworch_group }}"
+    owner: "{{ billy_user }}"
+    group: "{{ billy_group }}"
   become: true
   when: installation_mode == 'new'
 
@@ -170,7 +170,7 @@
 
 - name: insert admin tenant0 to database
   postgresql_query:
-    db: "{{ fworch_db_name }}"
+    db: "{{ billy_db_name }}"
     query: >
       DO $do$ BEGIN IF NOT EXISTS
       (SELECT tenant_id FROM tenant WHERE tenant_name='tenant0')
@@ -183,7 +183,7 @@
 
 - name: add connection for internal ldap
   postgresql_query:
-    db: "{{ fworch_db_name }}"
+    db: "{{ billy_db_name }}"
     query: >
       DO $do$ BEGIN IF NOT EXISTS
       (SELECT * FROM ldap_connection WHERE ldap_server = '{{ openldap_server }}')
@@ -201,7 +201,7 @@
 
 - name: insert admin tenant0 to device mapping - tenant0 can see all devices
   postgresql_query:
-    db: "{{ fworch_db_name }}"
+    db: "{{ billy_db_name }}"
     query: >
       DO $do$ BEGIN IF NOT EXISTS (SELECT * FROM tenant_to_device LEFT JOIN tenant USING (tenant_id) WHERE tenant_name='tenant0')
         THEN INSERT INTO tenant_to_device (tenant_id, device_id) 

@@ -40,15 +40,15 @@ For an overview see next section.
 
 - It is highly recommend to stop the import process before making any changes (don't forget to restart it after successful integration):
 ```bash
-  sudo systemctl stop fworch-importer
+  sudo systemctl stop billy-importer
 ```
-- create  a new firewall type by adding it to table stm_dev_type. To make this change permanent, this has to be added to [/roles/database/files/sql/creation/fworch-fill-stm.sql](/roles/database/files/sql/creation/fworch-fill-stm.sql) as follows:
+- create  a new firewall type by adding it to table stm_dev_type. To make this change permanent, this has to be added to [/roles/database/files/sql/creation/billy-fill-stm.sql](/roles/database/files/sql/creation/billy-fill-stm.sql) as follows:
 ```sql
 insert into stm_dev_typ (dev_typ_name,dev_typ_version,dev_typ_manufacturer) VALUES ('<new FW model>','<version>','<name of the new FW model''s manufacturer>');
 ```
 - Note that the version should be short and open ended, e.g. "7ff". If there is a major breaking change, a new version, e.g. 10ff will have to be created.
 - For a smooth upgrade path for existing installations, a new FWO version needs to be created and sql statement above also needs to be added to the upgrade script. For upgrade information see (documentation/developer-docs/installer/upgrading.md).
-- Create a sub-directory beneath /usr/local/fworch/importer/ called "dev_typ_name" + "dev_typ_version"
+- Create a sub-directory beneath /usr/local/billy/importer/ called "dev_typ_name" + "dev_typ_version"
 - Within this directory there has be a module called 'fwcommon.py' containing a function get_config using the parameters above
 - The config needs to be returned in the config2import variable as a json dict using the syntax described in [/documentation/developer-docs/importer/FWO-import-api.md](/documentation/developer-docs/importer/FWO-import-api.md)
 - For testing the new import module, you need to add a management and a device via the UI (see help section for details on this).
@@ -68,10 +68,10 @@ We recommend using a tool like insomnia for testing API stuff.
 importer files end up in different directories during installation process (not the same as in the source/installer code). For debugging use something like:
 
 ```bash
-sudo ln -s /home/tim/dev/tpur-fwo-june/firewall-orchestrator/roles/importer/files/importer /usr/local/fworch/importer
+sudo ln -s /home/tim/dev/tpur-fwo-june/billy/roles/importer/files/importer /usr/local/billy/importer
 ```
 or the following in vscode
 
 ```console
-sys.path.append(r"/home/tim/dev/tpur-fwo-june/firewall-orchestrator/roles/importer/files/importer")
+sys.path.append(r"/home/tim/dev/tpur-fwo-june/billy/roles/importer/files/importer")
 ```

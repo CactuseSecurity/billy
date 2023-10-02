@@ -6,7 +6,7 @@ All data is currently exchanged via a CSV interface.
 
 ### perl-based (parse-config file) import modules (old)
 If a field needs to be added to the CSV interface, for all old perl-based parsers 
-you need to add the name of the field to the respective _outlist in roles/importer/files/importer/CACTUS/FWORCH/import.pm, e.g.
+you need to add the name of the field to the respective _outlist in roles/importer/files/importer/CACTUS/billy/import.pm, e.g.
  @rule_outlist	=(qw (	rule_id disabled src.op src src.refs dst.op dst dst.refs services.op services services.refs
    action track install time comments name UID header_text src.zone dst.zone last_change_admin parent_rule_uid));
 
@@ -20,7 +20,7 @@ For python based importers, you need to adjust the roles/importer/files/importer
 ```console
 - boolean fields (negated, disabled) can contain either 0/1 or true/false?
 - directory:
-- import arrays/fields are defined in CACTUS/FWORCH/import.pm:
+- import arrays/fields are defined in CACTUS/billy/import.pm:
   our @obj_import_fields
   our @svc_import_fields
   our @user_import_fields

@@ -3,21 +3,7 @@
     - name: remove database dir
       file:
         state: absent
-        path: "{{ fworch_home }}/database"
-
-    - name: include redhat db install parts
-      include_tasks: redhat_preps.yml
-      when: installation_mode == "new" and ansible_os_family == "RedHat"
-
-    - name: install package postgresql packages for redhat
-      package:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - postgresql-server
-        - python3-psycopg2
-      when: ansible_os_family == "RedHat"
-      # todo: check if we need and if true, how to install libpq-dev(el)
+        path: "{{ billy_home }}/database"
 
     - name: install package postgresql packages for debian n ubuntu
       package:
@@ -28,11 +14,6 @@
         - python3-psycopg2
         - libpq-dev
       when: ansible_os_family == "Debian"
-
-    - name: initdb as extra step for redhat
-      shell: "LC_ALL=C.UTF-8 /usr/bin/postgresql-setup --initdb"
-      become: true
-      when: ansible_os_family == "RedHat"
 
     - name: find out installed postgres version
       script: get_pg_version.sh
@@ -56,12 +37,6 @@
         postgresql_config_file: /etc/postgresql/{{ pg_version }}/main/postgresql.conf
         postgresql_hba_file: /etc/postgresql/{{ pg_version }}/main/pg_hba.conf
       when: ansible_os_family == 'Debian'
-
-    - name: set postgresql config path for RedHat
-      set_fact:
-        postgresql_config_file: /var/lib/pgsql/data/postgresql.conf
-        postgresql_hba_file: /var/lib/pgsql/data/pg_hba.conf
-      when: ansible_os_family == 'RedHat'
 
     - name: edit postgresql.conf log_destination
       lineinfile:
@@ -116,7 +91,6 @@
       lineinfile:
         path: "{{ postgresql_config_file }}"
         line: "listen_addresses = '0.0.0.0'"
-        #line: "listen_addresses = '{{ api_network_listening_ip_address }},127.0.0.1'"
         regexp: listen_addresses
         backup: true
 
@@ -126,16 +100,10 @@
         backup: true
         insertbefore: '# IPv4 local connections:'
         block: |
-          #host  all         dbadmin             127.0.0.0/8                   md5
-          #host  all         dbadmin             api_network_listening_ip_address/32            md5
           host  all         dbadmin             0.0.0.0/0            md5
-          host  all         {{ fworch_user }}   127.0.0.0/8                   trust
+          host  all         {{ billy_user }}   127.0.0.0/8                   trust
           host  all         +dbbackupusers      127.0.0.0/8                   trust
           host  all         confexporter        127.0.0.0/8                   trust
-          host  all         +configimporters    127.0.0.0/8                   trust
-          #host  all         +configimporters    api_network_listening_ip_address/32   trust
-          # TODO: we need a solution here to add the IP of a remote importer instead of the name:
-          #host  all         +configimporters    importer_server_ip/32   trust 
   
     - name: reload postgres service
       service:
@@ -143,7 +111,7 @@
         state: restarted
 
     - name: copy database files to backend target
-      copy: src="{{ item }}" dest="{{ database_install_dir }}" owner="{{ fworch_user }}" group="{{ fworch_user }}"
+      copy: src="{{ item }}" dest="{{ database_install_dir }}" owner="{{ billy_user }}" group="{{ billy_user }}"
       loop:
         - csv
         - sql        
@@ -162,7 +130,7 @@
 
 - name: check if database already exists
   postgresql_query:
-    query: SELECT count(*) FROM pg_database WHERE datname='{{ fworch_db_name }}'
+    query: SELECT count(*) FROM pg_database WHERE datname='{{ billy_db_name }}'
     db: postgres
   register: db_exists
   become: true
@@ -200,6 +168,6 @@
 - name: remove database dir
   file:
     state: absent
-    path: "{{ fworch_home }}/database"
+    path: "{{ billy_home }}/database"
   when: installation_mode == "upgrade"
   become: true

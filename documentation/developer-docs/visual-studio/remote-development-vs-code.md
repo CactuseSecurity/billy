@@ -6,6 +6,6 @@ See <https://code.visualstudio.com/docs/remote/ssh> for instructions how to set 
 
 After setup we need to 
 - clone our fork repo on the remote machine
-- install fworch
+- install billy
 - stop the services we want to debug (middleware, ui)
 - start the services remotely in vs (code) for debugging

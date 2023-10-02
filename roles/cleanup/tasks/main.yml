@@ -1,8 +1,8 @@
-# change version to new number in /etc/fworch/fworch.yaml
+# change version to new number in /etc/billy/billy.yaml
 
 - name: check for existing main config file
   stat:
-    path: "{{ fworch_conf_file }}"
+    path: "{{ billy_conf_file }}"
   register: already_installed
 
 - set_fact:
@@ -23,7 +23,7 @@
 
 - name: edit central conf file - set new version
   lineinfile:
-    path: "{{ fworch_conf_file }}"
+    path: "{{ billy_conf_file }}"
     create: true
     regexp: "product_version"
     line: "    \"product_version\": \"{{ product_version }}\""
@@ -49,47 +49,3 @@
     state: restarted
   become: true
   when: "'frontends' in group_names"
-  
-- name: test whether demo data is present
-  postgresql_query:
-    db: "{{ fworch_db_name }}"
-    query: >
-      SELECT * FROM device WHERE dev_name='{{ sample_fortigate_name }}'
-  register: demo_data_present
-  become: true
-  become_user: postgres
-
-- name: find cron jobs in case of missing demo data
-  find:
-    paths: /etc/cron.d
-    patterns: "{{ product_name }}_sample_data_*"
-  register: files_to_delete
-  when: demo_data_present.query_result == []
-  become: true
-
-- name: delete cron jobs in case of missing demo data
-  file:
-    path: "{{ item.path }}"
-    state: absent
-  with_items: "{{ files_to_delete.files }}"
-  when: demo_data_present.query_result == []
-  become: true
-
-- name: remove temp importer_password from install host
-  file:
-    path: "{{ importer_password_file_on_installer }}"
-    state: absent
-  become: true
-  delegate_to: localhost
-
-- name: start importer service
-  systemd:
-    name: "{{ item }}"
-    state: started
-    daemon_reload: true
-    enabled: true
-  become: true
-  when: "'importers' in group_names"
-  loop:
-    - "{{ product_name }}-importer-legacy"
-    - "{{ product_name }}-importer-api"

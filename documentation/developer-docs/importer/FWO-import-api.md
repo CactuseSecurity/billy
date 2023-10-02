@@ -31,7 +31,7 @@
 - _refs fields contain a string with the uids of the referenced objects separated by "|"
 - the order of fields is arbitrary
 - _color can be any one listed in roles/database/files/csv/color.csv
-- action and track types can be found (and enhanced) in roles/database/files/sql/creation/fworch-fill-stm.sql
+- action and track types can be found (and enhanced) in roles/database/files/sql/creation/billy-fill-stm.sql
 
 ## network_objects
 
@@ -51,7 +51,7 @@ here we describe a single network object:
     "obj_zone": null                                        // string: name of the object's zone (e.g. for fortinet)
 }
 ```
-- obj_typ can be any of the following (see roles/database/files/sql/creation/fworch-fill-stm.sql): 
+- obj_typ can be any of the following (see roles/database/files/sql/creation/billy-fill-stm.sql): 
   network, group, host, machines_range, dynamic_net_obj, sofaware_profiles_security_level, gateway, cluster_member, gateway_cluster, domain, group_with_exclusion, ip_range, uas_collection, sofaware_gateway, voip_gk, gsn_handover_group, voip_sip, simple-gateway
 
 
@@ -77,7 +77,7 @@ here we describe a single service object:
     "rpc_nr": null                                          // string: for rpc service the rpc id
 },
 ```
-- svc_type can be any of the following: simple, group, rpc (see roles/database/files/sql/creation/fworch-fill-stm.sql)
+- svc_type can be any of the following: simple, group, rpc (see roles/database/files/sql/creation/billy-fill-stm.sql)
 
 ## user_objects
 

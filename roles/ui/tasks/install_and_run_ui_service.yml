@@ -2,7 +2,7 @@
 
     - name: copy blazor ui systemd service script
       template:
-        src: fworch-blazor-ui.service.j2
+        src: billy-blazor-ui.service.j2
         dest: "/lib/systemd/system/{{ ui_service_name }}.service"
         backup: true
         mode: "0644"
@@ -19,7 +19,7 @@
   args:
     chdir: "{{ ui_start_dir }}"
   become: true
-  become_user: "{{ fworch_user }}"
+  become_user: "{{ billy_user }}"
   environment: "{{ proxy_env }}"
 
 - name: make blazor ui run at host startup

@@ -3,7 +3,7 @@
 
 - name: guard - stop when trying anything but an upgrade with existing database
   fail:
-    msg: "Error: You chose upgrade on a system without existing database {{ fworch_db_name }}"
+    msg: "Error: You chose upgrade on a system without existing database {{ billy_db_name }}"
   when: db_exists.query_result.0.count == 0
 
 - name: create upgrade dir

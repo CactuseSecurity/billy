@@ -3,8 +3,8 @@
   file:
     path: "{{ middleware_ldif_dir }}"
     state: directory
-    owner: "{{ fworch_user }}"
-    group: "{{ fworch_group }}"
+    owner: "{{ billy_user }}"
+    group: "{{ billy_group }}"
   become: true
   tags: [ 'test', 'unittest' ]
 
@@ -52,8 +52,8 @@
       content: "{{ openldap_server_random_rootpw }}"
       dest: "{{ ldap_manager_pwd_file }}"
       mode: '0600'
-      owner: "{{ fworch_user }}"
-      group: "{{ fworch_group }}"
+      owner: "{{ billy_user }}"
+      group: "{{ billy_group }}"
     when: not is_manger_pw_present_flag.stat.exists
     tags: [ 'test' ]
 

@@ -38,14 +38,14 @@
       - docker-ce-cli
       - containerd.io
        
-  - name: Add the group 'docker' for {{ ansible_user }} and {{ fworch_user }} to allow running docker
+  - name: Add the group 'docker' for {{ ansible_user }} and {{ billy_user }} to allow running docker
     user:
         name: "{{ item }}"
         groups: docker
         append: true
     loop:
       -  "{{ ansible_user }}"
-      -  "{{ fworch_user }}"
+      -  "{{ billy_user }}"
 
   - name: set proxy for docker daemon to get images via proxy
     import_tasks: set-docker-daemon-proxy.yml

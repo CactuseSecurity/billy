@@ -5,7 +5,7 @@ all data whose knowledge is not potentially dependant on the user's role or tena
 Most config data will be stored in the database and only be accessible via API call. 
 
 ## All data necessary for making an API call needs to be held in a config file
-The following needs to be stored in a configuration file fworch.yaml on each module that needs the config data:
+The following needs to be stored in a configuration file billy.yaml on each module that needs the config data:
 ### public, can be stored in user context
 - API URI (needed by UI, Middleware, Importer modules)
 - Middleware server URI (needd by UI, Middleware, Importer modules)

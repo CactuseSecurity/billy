@@ -36,9 +36,9 @@ create exp-dev.sql for itsecorg:
         WHERE NOT do_not_import AND NOT hide_in_gui
     ) TO STDOUT (FORMAT CSV, FORCE_QUOTE *);
 
-# run csv export for fworch:
-#     psql -U dbadmin -h localhost -d fworchdb -c "\i exp-mgm.sql" >mgm.csv
-#     psql -U dbadmin -h localhost -d fworchdb -c "\i exp-dev.sql" >dev.csv
+# run csv export for billy:
+#     psql -U dbadmin -h localhost -d billydb -c "\i exp-mgm.sql" >mgm.csv
+#     psql -U dbadmin -h localhost -d billydb -c "\i exp-dev.sql" >dev.csv
 
 run csv export for itsecorg:
     psql -U dbadmin -h localhost -d isodb -c "\i exp-mgm.sql" >mgm.csv
@@ -51,16 +51,16 @@ then run this script:
 
 import sys, logging
 import csv, argparse
-base_dir = "/usr/local/fworch"
+base_dir = "/usr/local/billy"
 importer_base_dir = base_dir + '/importer'
 sys.path.append(importer_base_dir)
 
 parser = argparse.ArgumentParser(
-    description="convert database csv export of device data into graphql code for import into fworch\nsample; synopsis: fwo-convert-csv-dev-data.py -m mgm.csv -d dev.csv -o /tmp/fworch-dev-data.graphql; <can be imported into FWORCH>")
+    description="convert database csv export of device data into graphql code for import into billy\nsample; synopsis: fwo-convert-csv-dev-data.py -m mgm.csv -d dev.csv -o /tmp/billy-dev-data.graphql; <can be imported into billy>")
 parser.add_argument('-m', '--mgm_file', metavar='management_csv_file', required=True, help='filename to read management csv from')
 parser.add_argument('-d', '--dev_file', metavar='device_csv_file', required=True, help='filename to read device csv from')
 parser.add_argument('-o', '--outfile', metavar='output_file', required=True, help='filename to write output in json format to')
-parser.add_argument('-s', '--source', metavar='source_format', default='itsecorg', help='reading data from "itsecorg" (default) or "fworch" source')
+parser.add_argument('-s', '--source', metavar='source_format', default='itsecorg', help='reading data from "itsecorg" (default) or "billy" source')
 
 
 def convert_csv2graphql(csv_in, keys, types):

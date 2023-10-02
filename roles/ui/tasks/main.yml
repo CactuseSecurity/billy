@@ -10,35 +10,35 @@
 
     - name: check for ui dir
       stat:
-        path: "{{ fworch_home }}/ui"
+        path: "{{ billy_home }}/ui"
       register: ui_dir_check
 
     - name: backup ui dir
       synchronize:
-        src: "{{ fworch_home }}/ui"
-        dest: "{{ fworch_home }}/backup_ui"
+        src: "{{ billy_home }}/ui"
+        dest: "{{ billy_home }}/backup_ui"
       delegate_to: "{{ inventory_hostname }}"
       when: ui_dir_check.stat.exists and installation_mode == "upgrade"
 
     - name: remove ui dir
       file:
         state: absent
-        path: "{{ fworch_home }}/ui"
+        path: "{{ billy_home }}/ui"
       when: installation_mode == "upgrade"
 
     - name: create ui dir
       file:
         dest: "{{ ui_dir }}"
         state: directory
-        owner: "{{ fworch_user }}"
-        group: "{{ fworch_group }}"
+        owner: "{{ billy_user }}"
+        group: "{{ billy_group }}"
 
     - name: copy ui files to frontend target
       copy:
         src: "{{ item }}"
         dest: "{{ ui_dir }}"
-        owner: "{{ fworch_user }}"
-        group: "{{ fworch_group }}"
+        owner: "{{ billy_user }}"
+        group: "{{ billy_group }}"
       loop:
         - FWO.UI
       tags: [ 'test' ]

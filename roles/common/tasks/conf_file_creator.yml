@@ -2,7 +2,7 @@
 
   - name: fetch remote config file
     fetch:
-      src: "{{ fworch_conf_file }}"
+      src: "{{ billy_conf_file }}"
       dest: "temp_remote_config_file.json"
       flat: true
     when: already_installed and installation_mode == "upgrade"
@@ -18,9 +18,9 @@
       state: absent
       name: "temp_remote_config_file.json"
 
-  - name: create symlink /usr/local/fworch/etc to /etc/fworch
+  - name: create symlink /usr/local/billy/etc to /etc/billy
     file:
-      src: "{{ fworch_home }}/etc"
+      src: "{{ billy_home }}/etc"
       dest: "/etc/{{ product_name }}"
       state: link
 
@@ -33,7 +33,7 @@
     set_fact:
       config_json:
         product_version: "{{ product_version }}"
-        fworch_home: "{{ fworch_home }}"
+        billy_home: "{{ billy_home }}"
         dotnet_mode: "{{ dotnet_mode }}" 
         api_uri: "https://{{ api_network_listening_ip_address }}:{{ api_web_port }}/api/v1/graphql"
         api_hasura_jwt_alg: "{{ api_hasura_jwt_alg }}"
@@ -43,7 +43,7 @@
   - name: create central conf file by dumping varibale as json file
     copy: 
       content: "{{ config_json | to_nice_json }}" 
-      dest: "{{ fworch_conf_file }}"
+      dest: "{{ billy_conf_file }}"
     when: installation_mode == "new"
 
   become: true

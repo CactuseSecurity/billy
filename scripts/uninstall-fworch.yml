@@ -1,19 +1,19 @@
 ---
-# this script will uninstall all fworch components from all hosts in the chosen inventory
+# this script will uninstall all billy components from all hosts in the chosen inventory
 # call with:
-# sudo ansible-playbook/ scripts/uninstall-fworch.yml -K [-e "wipe_packages=yes"]
+# sudo ansible-playbook/ scripts/uninstall-billy.yml -K [-e "wipe_packages=yes"]
 # parameters:
-# wipe_packages=yes    removes all packages potentially installed during fworch installation
+# wipe_packages=yes    removes all packages potentially installed during billy installation
 #                      NB: this might break other applications running on the same system
 #
-# caveat: run this script with "wipe_packages" switch only if you are on an fworch-exclusive system
+# caveat: run this script with "wipe_packages" switch only if you are on an billy-exclusive system
 
 - name: stop docker container
-  command: docker stop fworch-api
+  command: docker stop billy-api
   ignore_errors: true
 
 - name: remove docker container
-  command: docker rm fworch-api
+  command: docker rm billy-api
   ignore_errors: true
 
 - name: restart postgres to make sure no connections are blocking the database removal
@@ -40,7 +40,7 @@
 - block:
     - name: remove database pre pg_version 13
       postgresql_db:
-        name: fworchdb
+        name: billydb
         state: absent
       become_user: postgres
       register: drop_db
@@ -49,7 +49,7 @@
 
 - block:
     - name: remove database for pg_version starting from 13
-      command: psql -c 'drop database if exists fworchdb with ( force )'
+      command: psql -c 'drop database if exists billydb with ( force )'
       become_user: postgres
       register: drop_db
       ignore_errors: true
@@ -57,8 +57,8 @@
 
 - name: check if db still exists
   postgresql_query:
-    db: "{{ fworch_db_name }}"
-    query: "select exists(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('fworchdb'))"
+    db: "{{ billy_db_name }}"
+    query: "select exists(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('billydb'))"
   become: yes
   become_user: postgres
   register: db_exists
@@ -94,16 +94,16 @@
   when: ansible_facts['distribution']|lower == 'debian' or ansible_facts['distribution']|lower == 'ubuntu'
   ignore_errors: true
 
-- name: stop and disable fworch-ui
+- name: stop and disable billy-ui
   service:
-    name: fworch-ui
+    name: billy-ui
     state: stopped
     enabled: no
   ignore_errors: true
 
-- name: stop and disable fworch-middleware
+- name: stop and disable billy-middleware
   service:
-    name: fworch-middleware
+    name: billy-middleware
     state: stopped
     enabled: no
   ignore_errors: true
@@ -117,7 +117,7 @@
 
 - block:
     - name: disable apache sites
-      command: a2dissite fworch-ui
+      command: a2dissite billy-ui
       ignore_errors: true
 
     - name: disable apache modules (due to a bug with php mod not properly getting purged)
@@ -129,7 +129,7 @@
         - proxy_wstunnel
       ignore_errors: true
 
-    - name: uninstall all packages for fworch, keeping git and ansible
+    - name: uninstall all packages for billy, keeping git and ansible
       package:
         state: absent
         name: "{{ item }}"
@@ -175,21 +175,21 @@
         name: slapd
         purge: yes
 
-    - name: remove fworch dirs and files
+    - name: remove billy dirs and files
       file:
         name: "{{ item }}"
         state: absent
       loop:
-        - "{{ fworch_home }}"
-        - /etc/fworch
-        - /etc/apache2/sites-available/fworch-ui.conf
-        - /etc/apache2/sites-available/fworch-api.conf
-        - /var/lib/ldap/fworch.internal
+        - "{{ billy_home }}"
+        - /etc/billy
+        - /etc/apache2/sites-available/billy-ui.conf
+        - /etc/apache2/sites-available/billy-api.conf
+        - /var/lib/ldap/billy.internal
         - /var/lib/ldap/example.com
         - /var/lib/pgsql/data
         - "{{ api_hasura_cli_bin }}"
-        - /var/fworch
-        - /var/log/fworch 
+        - /var/billy
+        - /var/log/billy 
       ignore_errors: true
 
     - name: remove OS users and delete home directories
@@ -199,19 +199,19 @@
         remove: yes
         state: absent
       loop:
-        - "{{ fworch_user }}"
-        - "fworchsample"
+        - "{{ billy_user }}"
+        - "billysample"
 
     - name: remove OS group
       group:
-        name: "{{ fworch_group }}"
+        name: "{{ billy_group }}"
         state: absent
 
-    # ssh-keygen -f "/usr/local/fworch/.ssh/known_hosts" -R "localhost"
+    # ssh-keygen -f "/usr/local/billy/.ssh/known_hosts" -R "localhost"
     - name: remove known host key
       known_hosts:
         name: "localhost"
-        path: "{{ fworch_home }}/.ssh/known_hosts"
+        path: "{{ billy_home }}/.ssh/known_hosts"
         state: absent
 
   become: yes

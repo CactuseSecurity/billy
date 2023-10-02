@@ -60,6 +60,6 @@ Initially the user or tenant group does not get any role assignments to avoid an
 An admin needs to manually assign role(s) to the user.
 
 ## Default users
-- The default password of all users is "fworch.1" and needs to be changed when logging in for the first time.
+- The default password of all users is "billy.1" and needs to be changed when logging in for the first time.
 - On each system an "admin" user, belonging to tenant0, is created with full access to everything. This user gets assigned the role "administrator". 
 - For test installations (only when using the install switch -e "auth_add_test_user=<username>") a user called "username" is created with restricted access. This user gets assigned the roles "reporter" and "tenant1" allowing only access to the test fortigate system data and not to the check point system data.

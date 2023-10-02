@@ -43,16 +43,16 @@ Clone your own fork, eg.
 
 change into the workspace directory on command line and run
 
-    git remote add upstream-cactus git@github.com:CactuseSecurity/firewall-orchestrator.git
+    git remote add upstream-cactus git@github.com:CactuseSecurity/billy.git
 
 Use the following command to verify settings:
 
-    tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/firewall-orchestrator$ git remote -v
-    origin git@github.com:tpurschke/firewall-orchestrator.git (fetch)
-    origin git@github.com:tpurschke/firewall-orchestrator.git (push)
-    upstream-cactus git@github.com:CactuseSecurity/firewall-orchestrator.git (fetch)
-    upstream-cactus git@github.com:CactuseSecurity/firewall-orchestrator.git (push)
-    tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/firewall-orchestrator$ 
+    tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/billy$ git remote -v
+    origin git@github.com:tpurschke/billy.git (fetch)
+    origin git@github.com:tpurschke/billy.git (push)
+    upstream-cactus git@github.com:CactuseSecurity/billy.git (fetch)
+    upstream-cactus git@github.com:CactuseSecurity/billy.git (push)
+    tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/billy$ 
 
 if vs code does not show the upstream repo in pull-from, just give it some time to show up?!
 
@@ -71,11 +71,11 @@ if vs code does not show the upstream repo in pull-from, just give it some time 
 
 ### install nuget packages
 
-    tim@acantha:~/dev/tpur-fwo/firewall-orchestrator/roles/lib/files/FWO.Middleware.Client$ dotnet add package System.IdentityModel.Tokens.Jwt
+    tim@acantha:~/dev/tpur-fwo/billy/roles/lib/files/FWO.Middleware.Client$ dotnet add package System.IdentityModel.Tokens.Jwt
 
 ### add local project reference
 
-    tim@acantha:~/dev/tpur-fwo/firewall-orchestrator/roles/auth/files/FWO_Auth_Server$ dotnet add reference ../../../lib/files/FWO_API_Client/FWO_API_Client.csproj
+    tim@acantha:~/dev/tpur-fwo/billy/roles/auth/files/FWO_Auth_Server$ dotnet add reference ../../../lib/files/FWO_API_Client/FWO_API_Client.csproj
    
    
 or alternatively add the following to csproj file:
@@ -88,20 +88,20 @@ or alternatively add the following to csproj file:
         
 ### create new project "FWO.ApiConfig"
 ```code
-  cd ~/dev/tpur-fwo/firewall-orchestrator/roles/lib/files
+  cd ~/dev/tpur-fwo/billy/roles/lib/files
   mkdir FWO.ApiConfig
   cd FWO.ApiConfig
   dotnet new classlib -f netcoreapp3.1
 ```
 ### add project to solution file
 ```code
-  cd ~/dev/tpur-fwo/firewall-orchestrator/roles
+  cd ~/dev/tpur-fwo/billy/roles
   dotnet sln FWO.sln add lib/files/FWO.ApiConfig
 ```
 
 ### add necessary references in project file
 
-    cat ~/dev/tpur-fwo/firewall-orchestrator/roles/lib/files/FWO.ApiConfig/FWO.ApiConfig.csproj
+    cat ~/dev/tpur-fwo/billy/roles/lib/files/FWO.ApiConfig/FWO.ApiConfig.csproj
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">

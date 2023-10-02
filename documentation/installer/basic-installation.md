@@ -16,7 +16,7 @@ if not already configured, add your current user to sudo group (make sure to act
 usermod -a -G sudo `whoami`
 ```
 
-Also make sure your packages are up to date before FWORCH installation using e.g.
+Also make sure your packages are up to date before billy installation using e.g.
 
     sudo apt update && sudo apt upgrade
 
@@ -25,13 +25,13 @@ possibly followed by a reboot.
 
 2) get Firewall Orchestrator with the following command (as normal user)
 ```console
-git clone https://github.com/CactuseSecurity/firewall-orchestrator.git
+git clone https://github.com/CactuseSecurity/billy.git
 ```
 
 3) Ansible Installation
   - Ubuntu 18.04, Debian 10 only: install latest ansible before firewall orchestrator installation
 
-        cd firewall-orchestrator; ansible-playbook scripts/install-latest-ansible.yml -K
+        cd billy; ansible-playbook scripts/install-latest-ansible.yml -K
 
   - All platforms: install galaxy collections
 
@@ -40,12 +40,12 @@ git clone https://github.com/CactuseSecurity/firewall-orchestrator.git
 4) install (on localhost)
 
 ```console
-cd firewall-orchestrator; ansible-playbook site.yml -K
+cd billy; ansible-playbook site.yml -K
 ```
 
 Enter sudo password when prompted "BECOME or SUDO password:"
 
-That's it. Firewall-orchestrator is ready for usage. You will find the randomly generated login credentials printed out at the very end of the installation:
+That's it. billy is ready for usage. You will find the randomly generated login credentials printed out at the very end of the installation:
 ```
 ...
 TASK [display secrets for this installation] ***********************************

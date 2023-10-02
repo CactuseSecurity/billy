@@ -1,7 +1,7 @@
 # how to test with a config file without contact to the original manager
 
 ```
-fworch@ubu18test:~$ python3 importer/checkpointR8x/parse_config.py -f /tmp/isotmp/3/cfg/xxx11.cfg -r 'gMgmt-Cluster_Internet-internal Security' -d 1
+billy@ubu18test:~$ python3 importer/checkpointR8x/parse_config.py -f /tmp/isotmp/3/cfg/xxx11.cfg -r 'gMgmt-Cluster_Internet-internal Security' -d 1
 2021-05-04 06:04:07,232 - DEBUG - debug_level: 1
 2021-05-04 06:04:07,418 - DEBUG - parse_config - args
 f:/tmp/isotmp/3/cfg/xxx11.cfg

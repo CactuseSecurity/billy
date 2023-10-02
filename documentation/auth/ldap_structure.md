@@ -2,7 +2,7 @@
 ~~~console
 
 (root)
-dc:fworch.internal--------------------------------------------------------------------------------------
+dc:billy.internal--------------------------------------------------------------------------------------
 |                                                                                                      |
 ou:user----------------------------------------------------------------------------|               ou:role -->
 |                                                                                  |
@@ -13,20 +13,20 @@ ou:systemuser-------------------------------------                              
 |                                                                                  |                      |                       |                   |
 cn:admin                cn:dbadmin               cn:n.n                            cn:admin               cn:user1_demo                cn:testuser         cn:n.n
 uid: 12345                                                                         ...                                            | -->>
-passwd: sha256(fworch.1)
+passwd: sha256(billy.1)
 n.n.
 
 
 --> role -----------------------------------------------------------------------------------------
       |                                                     |                  |              |
     rolle1                                               rolle2
-    dn: ou=rolle1,ou=role,dc=fworch.internal
+    dn: ou=rolle1,ou=role,dc=billy.internal
     member-uids: admin, user1, user2, ....
 
 
 -->> testuser
 # testuser, tenant1, anwender, user, bla, internal
-dn: uid=testuser,ou=tenant1,ou=anwender,ou=user,dc=fworch.internal
+dn: uid=testuser,ou=tenant1,ou=anwender,ou=user,dc=billy.internal
 cn: Feuerstein, Fred
 uid: testuser
 userPassword:: <hash>

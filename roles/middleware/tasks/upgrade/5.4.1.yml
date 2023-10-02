@@ -10,8 +10,8 @@
     content: "{{ importer_password }}\n"
     dest: "{{ importer_password_file }}"
     mode: '0600'
-    owner: "{{ fworch_user }}"
-    group: "{{ fworch_group }}"
+    owner: "{{ billy_user }}"
+    group: "{{ billy_group }}"
   become: true
 
 - name: Set importer password in ldap

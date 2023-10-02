@@ -2,8 +2,8 @@
 
 - name: recover backup
   synchronize:
-    src: "{{ fworch_home }}/backup_middleware/middleware"
-    dest: "{{ fworch_home }}"
+    src: "{{ billy_home }}/backup_middleware/middleware"
+    dest: "{{ billy_home }}"
   delegate_to: "{{ inventory_hostname }}"
   listen: "middleware handler"
   when: middleware_handler_guard == "start"
@@ -12,7 +12,7 @@
 - name: delete backup
   file:
     state: absent
-    path: "{{ fworch_home }}/backup_middleware"
+    path: "{{ billy_home }}/backup_middleware"
   listen: "middleware handler"
   become: true
   

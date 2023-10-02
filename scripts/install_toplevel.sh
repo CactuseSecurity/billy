@@ -2,7 +2,7 @@
 echo "not finalized - do not use yet"
 exit 0
 
-#firewall-orchestrator installer
+#billy installer
 
 #install required packages
 echo "test"
@@ -19,7 +19,7 @@ ssh 127.0.0.1
 ansible -m ping 127.0.0.1
 
 #clone repository
-git clone https://github.com/CactuseSecurity/firewall-orchestrator.git
+git clone https://github.com/CactuseSecurity/billy.git
 
-#install firewall-orchestrator
-cd firewall-orchestrator || exit; ansible-playbook site.yml -K
+#install billy
+cd billy || exit; ansible-playbook site.yml -K

@@ -1,5 +1,5 @@
 [Unit]
-Description=FWOrch Middleware Server
+Description=billy Middleware Server
 {% if 'apiserver' in group_names -%}
 After=network.target remote-fs.target nss-lookup.target {{ api_service_name }}.service slapd.service
 {% else -%}
@@ -12,7 +12,7 @@ ExecStart={{ middleware_server_start_dir }}/bin/{{ dotnet_mode }}/net{{ dotnet_v
 #StandardOutput=syslog
 #StandardError=syslog
 SyslogIdentifier={{ middleware_server_syslog_id }}
-User={{ fworch_user }}
+User={{ billy_user }}
 Environment=
 [Install]
 WantedBy=multi-user.target

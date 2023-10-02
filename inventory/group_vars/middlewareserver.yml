@@ -1,4 +1,4 @@
-openldap_path: "dc=fworch,dc=internal"
+openldap_path: "dc=billy,dc=internal"
 openldap_server: "127.0.0.1"
 openldap_port: 636
 openldap_url: "ldaps://{{ openldap_server }}"
@@ -13,9 +13,9 @@ openldap_writer_dn: "cn={{ openldap_writer_name }},ou=systemuser,ou=user,{{ open
 openldap_server_domain_name: "{{ product_name }}.internal"
 
 middleware_path_rel: FWO.Middleware.Server
-middleware_server_base_dir: "{{ fworch_home }}/middleware/files"
+middleware_server_base_dir: "{{ billy_home }}/middleware/files"
 middleware_server_start_dir: "{{ middleware_server_base_dir }}/FWO.Middleware.Server"
-middleware_ldif_dir: "{{ fworch_home }}/etc/ldif"
+middleware_ldif_dir: "{{ billy_home }}/etc/ldif"
 
 importer_password: not4production
 apache_mw_timeout: 14400

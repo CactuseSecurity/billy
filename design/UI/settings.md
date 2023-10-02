@@ -6,7 +6,7 @@ graphical descriptions, see <https://xfer.cactus.de/index.php/f/18376>
   - manage user settings (for currently logged in user only)
     - select UI lanaguage (additionally offer language selection on top level menu with little flags)
     - change password (only for local users!)
-  - manage devices (managements + devices) - for API queries see <https://github.com/CactuseSecurity/firewall-orchestrator/blob/master/design/UI/settings-management.md>
+  - manage devices (managements + devices) - for API queries see <https://github.com/CactuseSecurity/billy/blob/master/design/UI/settings-management.md>
     - add management
     - modify management (enable/disable import of management, change details, ...)
     - add device

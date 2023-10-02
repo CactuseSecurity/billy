@@ -6,28 +6,18 @@
 
 Both physical and virtual systems are supported
 
-#### For minimal (test) installations
-- 20 GB HDD
-- 8 GB RAM
-- 1 CPU
-
 #### For standard production installations (<1000 rules)
-- 200 GB SSD 
-- 16 GB RAM
-- 4 CPUs
-
-#### For large production installations (>1000 rules)
-- 800 GB SSD 
-- 32 GB RAM
-- 8 CPUs
+- 30 GB SSD 
+- 8 GB RAM
+- 2 CPUs
 
 ### Software Requirements
 
 Supported operating systms: 
-- Ubuntu >=18.04 (LTS only)
-- Debian >=10
+- Ubuntu >=20.04 (LTS only)
+- Debian >=11
 
-Recommended: Ubuntu 20.04, Debian 11
+Recommended: Ubuntu 22.04, Debian 12
 
 ### Requirements Network Connection
 - For software download during installation and upgrade:
@@ -38,13 +28,13 @@ Recommended: Ubuntu 20.04, Debian 11
 ## Initial login web ui
 
 - use your local browser to connect to [https://localhost/](https://localhost)
-- login with username admin, the password can be found in /etc/fworch/secets/ui_admin_pwd, it will also displayed at the end of the installation routine
+- login with username admin, the password can be found in /etc/billy/secets/ui_admin_pwd, it will also displayed at the end of the installation routine
 - create additional users and assign roles (see help pages) 
 
 ## API login graphiql
 
 - use your local browser to connect to <https://localhost:9443/api>
-- login with hasura admin password found in file /etc/fworch/secets/hasura_admin_pwd
+- login with hasura admin password found in file /etc/billy/secets/hasura_admin_pwd
 
 ## non local login
 

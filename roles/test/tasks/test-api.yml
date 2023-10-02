@@ -82,7 +82,7 @@
 # Todo: this only works if the hasura key is actually installed on the machine running the tests
 - name: read hasura admin secret from file for tests
   slurp:
-    src: "{{ fworch_secrets_dir }}/hasura_admin_pwd"
+    src: "{{ billy_secrets_dir }}/hasura_admin_pwd"
   register: api_hasura_admin_secret
   become: true
 

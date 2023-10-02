@@ -7,7 +7,7 @@ namespace FWO.Logging
     public static class Log
     {
         private static SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
-        private static string lockFilePath = $"/var/fworch/lock/{Assembly.GetEntryAssembly()?.GetName().Name}_log.lock";
+        private static string lockFilePath = $"/var/billy/lock/{Assembly.GetEntryAssembly()?.GetName().Name}_log.lock";
         private static Random random = new Random();
 
         static Log()
@@ -160,7 +160,7 @@ namespace FWO.Logging
         public static void WriteAlert(string Title, string Text)
         {
             // fixed format to be further processed (e.g. splunk)
-            WriteInColor($"FWORCHAlert - {Title}, {Text}");
+            WriteInColor($"billyAlert - {Title}, {Text}");
         }
 
         private static void WriteInColor(string Text, ConsoleColor? ForegroundColor = null, ConsoleColor? BackgroundColor = null)

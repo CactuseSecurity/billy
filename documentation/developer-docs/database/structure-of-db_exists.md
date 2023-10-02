@@ -1,16 +1,16 @@
 # The variable db_exists
 
-db_exists is used to veriefy if the database fworch_db exists before installing it
+db_exists is used to veriefy if the database billy_db exists before installing it
 
 ## output
 
-the output for non-existing fworch_db is
+the output for non-existing billy_db is
 
     ok: [localhost] => {
     "db_exists": {
             "changed": false,
             "failed": false,
-            "query": "SELECT count(*) FROM pg_database WHERE datname='fworch_db'",
+            "query": "SELECT count(*) FROM pg_database WHERE datname='billy_db'",
             "query_result": [
                 {
                     "count": 0

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-#  export-fworch-config.py: export the full config of the product itself for later import
-#  does not contain any firewall config data, just the device config plus fworch user config
+#  export-billy-config.py: export the full config of the product itself for later import
+#  does not contain any firewall config data, just the device config plus billy user config
 
 # todo: remove redundant code
     # todo: use a single source for fwo_api between this script and importer
@@ -24,16 +24,16 @@
 
 import sys, logging, re
 import json, requests, requests.packages, argparse
-base_dir = "/usr/local/fworch"
+base_dir = "/usr/local/billy"
 importer_base_dir = base_dir + '/importer'
 sys.path.append(importer_base_dir)
 import common_scripts as common_scripts, fwo_api
 
 parser = argparse.ArgumentParser(
-    description="Export fworch configuration into encrypted json file\nsample; synopsis for ex- and import: fwo-export-config.py -o/tmp/fworch-config.graphql; <move to freshly installed FWO system without demo data>; fwo-execute-graphql.py -i/tmp/fworch-config.graphql")
+    description="Export billy configuration into encrypted json file\nsample; synopsis for ex- and import: fwo-export-config.py -o/tmp/billy-config.graphql; <move to freshly installed FWO system without demo data>; fwo-execute-graphql.py -i/tmp/billy-config.graphql")
 parser.add_argument('-o', '--out', metavar='output_file', required=True, help='filename to write output in json format to')
-parser.add_argument('-u', '--user', metavar='user_name', default='admin', help='username for getting fworch config (default=admin')
-parser.add_argument('-p', '--password', metavar='password_file', default=base_dir + '/etc/secrets/ui_admin_pwd', help='username for getting fworch config (default=$FWORCH_HOME/etc/secrets/ui_admin_pwd')
+parser.add_argument('-u', '--user', metavar='user_name', default='admin', help='username for getting billy config (default=admin')
+parser.add_argument('-p', '--password', metavar='password_file', default=base_dir + '/etc/secrets/ui_admin_pwd', help='username for getting billy config (default=$billy_HOME/etc/secrets/ui_admin_pwd')
 parser.add_argument('-d', '--debug', metavar='debug_level', default='0',
                     help='Debug Level: 0=off, 1=send debug to console, 2=send debug to file, 3=keep temporary config files; default=0')
 parser.add_argument('-s', '--ssl', metavar='ssl_verification_mode', default='',
@@ -65,7 +65,7 @@ if len(sys.argv) == 1:
     parser.print_help(sys.stderr)
     sys.exit(1)
 
-fwo_config_filename = base_dir + '/etc/fworch.json'
+fwo_config_filename = base_dir + '/etc/billy.json'
 if args.ssl == '' or args.ssl == 'off':
     requests.packages.urllib3.disable_warnings()  # suppress ssl warnings only
 debug_level = int(args.debug)

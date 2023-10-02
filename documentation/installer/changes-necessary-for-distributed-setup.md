@@ -4,28 +4,28 @@
 
 add all hosts involved, e.g.
 
-    fworch-front ansible_host=10.1.1.81
-    fworch-back ansible_host=10.1.1.83
-    fworch-side ansible_host=10.1.1.82
+    billy-front ansible_host=10.1.1.81
+    billy-back ansible_host=10.1.1.83
+    billy-side ansible_host=10.1.1.82
 
     [frontends]
-    fworch-front
+    billy-front
 
     [backendserver]
-    fworch-back
+    billy-back
 
     [apiserver]
-    fworch-side
+    billy-side
 
     [importers]
-    fworch-side
+    billy-side
 
     [authserver]
-    fworch-back
+    billy-back
     # does not work with other hosts at the moment
 
     [sampleserver]
-    fworch-side
+    billy-side
 
 
 ## inventory/all
@@ -34,11 +34,11 @@ set specific IP or hostname for database host, e.g.
 
 replace
 
-    fworch_db_host: 127.0.0.1
+    billy_db_host: 127.0.0.1
 
 with
 
-    fworch_db_host: 10.1.1.83
+    billy_db_host: 10.1.1.83
 
 ## roles/database/tasks/main.yml
 
@@ -52,13 +52,13 @@ this does not work remotely (auth host <> db host), as there is no postgres user
     - name: copy authentication sql file
     copy:
         src: pre_auth_functions.sql
-        dest: "{{ fworch_home }}/auth/"
-        owner: "{{ fworch_user }}"
-        group: "{{ fworch_group }}"
+        dest: "{{ billy_home }}/auth/"
+        owner: "{{ billy_user }}"
+        group: "{{ billy_group }}"
     become: yes
 
     - name: create functions needed during authentication
-    command: 'psql -d {{ fworch_db_name }} -c "\i {{ fworch_home }}/auth/pre_auth_functions.sql"'
+    command: 'psql -d {{ billy_db_name }} -c "\i {{ billy_home }}/auth/pre_auth_functions.sql"'
     become: yes
     become_user: postgres
 

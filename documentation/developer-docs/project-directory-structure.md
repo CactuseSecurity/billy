@@ -11,18 +11,17 @@
 - A list of important variables from inventory/all
 
 ```console
-fworch_user: fworch
-fworch_home: "{{ fworch_parent_dir }}/{{ fworch_user }}"
-sample_config_user: fworchsample
+billy_user: billy
+billy_home: "{{ billy_parent_dir }}/{{ billy_user }}"
+sample_config_user: billysample
 sample_config_user_home: "/home/{{ sample_config_user }}"
 ```
 
 - The only role defined in all is iso-common
 - The tasks of iso-common include
 
-  - creating {{ fworch_parent_dir }}/fworch
-  - creating user fworch
-  - adding file iso.conf to {{ fworch_parent_dir }}/fworch/etc
+  - creating {{ billy_parent_dir }}/billy
+  - creating user billy
   - creating logs
   
 ## hosts: backends
@@ -44,11 +43,11 @@ database_dir: /var/lib/pgsql/data
   
 - The role docker executes the tasks
   - downloads and installs Docker and related packages
-  - creates local config directory {{ fworch_home }}/.docker and adds config.json
+  - creates local config directory {{ billy_home }}/.docker and adds config.json
 
 - The role database executes the tasks
   - installs postgresql DBMS
-  - copies install directory (roles/backend/files/install) to {{ fworch_home }}. It contains the database
+  - copies install directory (roles/backend/files/install) to {{ billy_home }}. It contains the database
   - removes all containers to make sure the database can be dropped (otherwise the hasura process blocks dropping the database)
   - copies and executes database install scripts
   - sets passwords for database users

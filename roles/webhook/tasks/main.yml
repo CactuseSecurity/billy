@@ -1,22 +1,22 @@
 ---
 - block:
 
-    - name: add {{ fworchtest_user }} user
+    - name: add {{ billytest_user }} user
       user:
-        name: "{{ fworchtest_user }}"
+        name: "{{ billytest_user }}"
         shell: /bin/bash
-        home: "{{ fworchtest_home }}"
+        home: "{{ billytest_home }}"
         state: present
-        group: "{{ fworch_group }}"
+        group: "{{ billy_group }}"
         generate_ssh_key: true
         ssh_key_bits: 4096
         ssh_key_file: .ssh/id_rsa     
         comment: "{{ product_name }} test user for webhook github integration"
 
-    - name: give {{ fworchtest_user }} user full sudo access without pwd for webhook automation
+    - name: give {{ billytest_user }} user full sudo access without pwd for webhook automation
       lineinfile:
         path: /etc/sudoers
-        line: "{{ fworchtest_user }} ALL=(ALL) NOPASSWD:ALL"
+        line: "{{ billytest_user }} ALL=(ALL) NOPASSWD:ALL"
 
     # ansible is needed for running auto install on the fwo host itself
     - name: Install packages for webhook receiver
@@ -26,51 +26,51 @@
         - python3-flask
         - ansible
         
-    - name: create webhook dir {{ fworchtest_home }}/webhook
+    - name: create webhook dir {{ billytest_home }}/webhook
       file:
-        dest: "{{ fworchtest_home }}/webhook"
+        dest: "{{ billytest_home }}/webhook"
         state: directory
-        owner: "{{ fworchtest_user }}"
-        group: "{{ fworch_group }}"
+        owner: "{{ billytest_user }}"
+        group: "{{ billy_group }}"
         mode: "0775"
 
     - name: copy startup file from template
       template:
-        src: fworch-webhook-receiver.service.j2
-        dest: "/lib/systemd/system/fworch-webhook-receiver.service"
+        src: billy-webhook-receiver.service.j2
+        dest: "/lib/systemd/system/billy-webhook-receiver.service"
         mode: "0755"
       notify: "restart daemons"
 
     - name: copy webhook file from template
       template:
-        src: fworch-webhook-receiver.py.j2
-        dest: "{{ fworchtest_home }}/fworch-webhook-receiver.py"
+        src: billy-webhook-receiver.py.j2
+        dest: "{{ billytest_home }}/billy-webhook-receiver.py"
         mode: "0755"
       notify: "restart daemons"
 
     - name: make webhook run at host startup
       systemd:
-        name: fworch-webhook-receiver
+        name: billy-webhook-receiver
         enabled: true
 
     - name: start webhook
       systemd:
-        name: fworch-webhook-receiver
+        name: billy-webhook-receiver
         state: restarted
 
     - name: create webhook secret file
       lineinfile:
-        path: "{{ fworchtest_home }}/fworch-webhook.secret"
+        path: "{{ billytest_home }}/billy-webhook.secret"
         line: "{{ webhook_secret }}"
         create: true
         backup: true
         mode: 0600
-        owner: "{{ fworchtest_user }}"
-        group: "{{ fworch_group }}"
+        owner: "{{ billytest_user }}"
+        group: "{{ billy_group }}"
 
-    - name: create fworchtest gitconfig file
+    - name: create billytest gitconfig file
       blockinfile:
-        path: "{{ fworchtest_home }}/.gitconfig"
+        path: "{{ billytest_home }}/.gitconfig"
         block: |
           [http]
             proxy = {{ http_proxy }}
@@ -79,7 +79,7 @@
         create: true
         backup: true
         mode: 0644
-        owner: "{{ fworchtest_user }}"
-        group: "{{ fworch_group }}"
+        owner: "{{ billytest_user }}"
+        group: "{{ billy_group }}"
 
   become: true

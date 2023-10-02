@@ -61,7 +61,7 @@ mutation newManagement(
   "sshHostname": "install-srv",
   "sshPort": 22,
   "secret": "private-key",
-  "sshUser": "fworch-import-user",
+  "sshUser": "billy-import-user",
   "hideInGui": false,
   "doNotImport": false,
   "forceInitialImport": false

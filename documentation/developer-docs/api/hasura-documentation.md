@@ -13,7 +13,7 @@ Therefore upgrades to database tables and permissions now need to be handled as 
 ## Configuration parameters
 
 ### HASURA_GRAPHQL_DATABASE_URL
-- value: "postgres://{{ api_user }}:{{ api_user_password }}@{{ fworch_db_host }}:{{ fworch_db_port }}/{{ fworch_db_name }}"
+- value: "postgres://{{ api_user }}:{{ api_user_password }}@{{ billy_db_host }}:{{ billy_db_port }}/{{ billy_db_name }}"
 - description: the database connection string (currently using a single database for firewall and metadata)
 
 ### HASURA_GRAPHQL_ENABLE_CONSOLE

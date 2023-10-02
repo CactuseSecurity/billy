@@ -92,7 +92,7 @@ namespace FWO.Api.Data
 
         public bool IsInternal()
         {
-            return Root.Contains("fworch") && Root.Contains("internal");
+            return Root.Contains("billy") && Root.Contains("internal");
         }
 
         public string getTenant (int tenantLevel = 1)

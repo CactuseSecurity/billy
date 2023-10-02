@@ -80,7 +80,7 @@
                 "PYTHONPATH": "${PYTHONPATH}:${workspaceRoot}"
             },
             "args": [
-                "/var/fworch/lock/FWO.Middleware.Server_log.lock"
+                "/var/billy/lock/FWO.Middleware.Server_log.lock"
             ]
         },
         {
@@ -206,10 +206,10 @@
                 "PYTHONPATH": "${PYTHONPATH}:${workspaceRoot}"
             },
             "args": [
-                "-m/usr/local/fworch/tmp/mgm.csv",
-                "-d/usr/local/fworch/tmp/dev.csv",
-                "-o/usr/local/fworch/tmp/devices.graphql",
-                "-sfworch",
+                "-m/usr/local/billy/tmp/mgm.csv",
+                "-d/usr/local/billy/tmp/dev.csv",
+                "-o/usr/local/billy/tmp/devices.graphql",
+                "-sbilly",
                 "-f7"
             ]
         },
@@ -223,7 +223,7 @@
                 "PYTHONPATH": "${PYTHONPATH}:${workspaceRoot}"
             },
             "args": [
-                "-o/tmp/fworch-config"
+                "-o/tmp/billy-config"
             ]
         },
         {
@@ -236,7 +236,7 @@
                 "PYTHONPATH": "${PYTHONPATH}:${workspaceRoot}"
             },
             "args": [
-                "-i/tmp/fworch-config.graphql"
+                "-i/tmp/billy-config.graphql"
             ]
         },
         {
@@ -249,7 +249,7 @@
                 "PYTHONPATH": "${PYTHONPATH}:${workspaceRoot}"
             },
             "args": [
-                "-i/tmp/fworch-config.graphql"
+                "-i/tmp/billy-config.graphql"
             ]
         },
         {

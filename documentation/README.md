@@ -1,11 +1,11 @@
 # Documentation Firewall Orchestrator
 
 ## architecture
-[architecture diagram in draw.io format](fworch-architecture.xml)
+[architecture diagram in draw.io format](billy-architecture.xml)
 
 ## Product port list
 
-    fworchtest@devsrv2:~/firewall-orchestrator$ sudo netstat -tulpen
+    billytest@devsrv2:~/billy$ sudo netstat -tulpen
     Active Internet connections (only servers)
     Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode      PID/Program name    
     tcp        0      0 127.0.0.1:5000          0.0.0.0:*               LISTEN      60320      2783551    456927/FWO.Ui       
@@ -29,5 +29,5 @@
     udp        0      0 127.0.0.1:323           0.0.0.0:*                           0          28234      1260/chronyd        
     udp        0      0 127.0.0.53:53           0.0.0.0:*                           101        20384      752/systemd-resolve 
     udp6       0      0 ::1:323                 :::*                                0          28235      1260/chronyd        
-    fworchtest@devsrv2:~/firewall-orchestrator$ 
+    billytest@devsrv2:~/billy$ 
  

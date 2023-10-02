@@ -37,7 +37,7 @@ Please follow our [Code of conduct](code-of-conduct.md) in the context of any co
 
 We appreciate first time contributors and we are happy to assist you in getting started. In case of questions, just reach out to us!
 
-You find all issues suitable for first time contributors [here](https://github.com/CactuseSecurity/firewall-orchestrator/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+You find all issues suitable for first time contributors [here](https://github.com/CactuseSecurity/billy/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 
 <a name="areas"></a>
 
@@ -74,7 +74,7 @@ Our goal is to keep our Firewall Orchestrator stable and secure. If you would li
 
 - Provide steps to reproduce the issue
 
-- Please include logs of the server (/var/log/fworch/*.log), if relevant.
+- Please include logs of the server (/var/log/billy/*.log), if relevant.
 
 ### Working on an issue
 

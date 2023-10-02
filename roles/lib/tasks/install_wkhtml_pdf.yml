@@ -21,8 +21,8 @@
         dest: "{{ lib_tmp_dir }}/wkhtmltox_0.12.6.1-2.jammy_amd64.deb"
         force: true
         mode: "0644"
-        owner: "{{ fworch_user }}"
-        group: "{{ fworch_group }}"
+        owner: "{{ billy_user }}"
+        group: "{{ billy_group }}"
       environment: "{{ proxy_env }}"
 
     - name: install wkhtmltox for ubuntu 22.04 only

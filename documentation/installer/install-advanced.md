@@ -20,7 +20,7 @@ ansible-playbook -e "installation_mode=new" site.yml -K
 ```
 
 installation_mode options:
-- new (default) - assumes that no fworch is installed on the target devices - fails if it finds an installation
+- new (default) - assumes that no billy is installed on the target devices - fails if it finds an installation
 - uninstall     - uninstalls the product including any data (database, ldap, files)!
 - upgrade       - installs on top of an existing system preserving any existing data in ldap, database, api; removes all files from target and copies latest sources instead
                 
@@ -96,7 +96,7 @@ Here is a sample config you can use for configuring your already running syslog:
 
 variables (already set in inventory):
 ```console
-product_name: fworch
+product_name: billy
 middleware_server_syslog_id: "{{ product_name }}.middleware-server"
 ui_syslog_id: "{{ product_name }}-ui"
 ldap_syslog_id: slapd
@@ -258,7 +258,7 @@ After you defined additional distributed servers you have to add them to the hos
 
 if you want to distribute functionality to different hosts:
 
-modify firewall-orchestrator/inventory/hosts to your needs
+modify billy/inventory/hosts to your needs
 
 change ip addresses) of hosts to install to, e.g.
 
@@ -271,12 +271,10 @@ put the hosts into the correct section (`[frontends]`, `[backends]`, `[importers
 
 make sure all target hosts meet the requirements for ansible (user with pub key auth & full sudo rights)
 
-modify isohome/etc/iso.conf on frontend(s) - only needed for legacy (perl-based) importers:
-
 enter the address of the database backend server, e.g.
 
 ```console
-fworch database hostname              10.5.10.10
+billy database hostname              10.5.10.10
 ```
 
 modify /etc/postgresql/x.y/main/pg_hba.conf to allow secuadmins access from web frontend(s), e.g.

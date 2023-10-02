@@ -10,9 +10,9 @@
 - connect via ssh and set expert password
 - also run
 
-        add user fworch userid 1000 homedir /home/fworch
-        add rba user fworch roles monitorRole
-        set user fworch password 'secret'
+        add user billy userid 1000 homedir /home/billy
+        add rba user billy roles monitorRole
+        set user billy password 'secret'
         # add allowed-client network ipv4-address 10.8.6.0 mask-length 24
 
 ## Tell api to listen for all gui clients without GUI client

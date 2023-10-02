@@ -12,8 +12,8 @@ namespace FWO.Config.File
         /// <summary>
         /// Path to config file
         /// </summary>
-        private const string basePath = "/etc/fworch";
-        private const string configPath = basePath + "/fworch.json";
+        private const string basePath = "/etc/billy";
+        private const string configPath = basePath + "/billy.json";
 
         /// <summary>
         /// Path to jwt public key

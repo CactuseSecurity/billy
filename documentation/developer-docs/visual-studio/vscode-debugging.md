@@ -1,4 +1,4 @@
-# How to debug fworch using vscode or vs
+# How to debug billy using vscode or vs
 
 ## using central backend host
 devsrvffm is a central backend server for all services that are not debugged locally on client via visual studio (code)
@@ -22,8 +22,8 @@ Only changes to roles, inventory and site.yml will trigger a rebuild, not docume
 ### add local config on development client
 
 In order to allow locally running components to read the necessary config you have to create the following config files on your client:
-    /etc/fworch/   (in Windows "current drive":\etc\fworch\)
-        fworch.yaml
+    /etc/billy/   (in Windows "current drive":\etc\billy\)
+        billy.yaml
         secrets/
           jwt_private_key.pem
           jwt_public_key.pem
@@ -32,9 +32,9 @@ For keys see below.
 
 If you manually replace the keys on the server side (use the test keys) you need to reboot the server to reload all services depending on these keys.
 
-#### /etc/fworch/fworch.yaml
+#### /etc/billy/billy.yaml
 ```yaml
-fworch_home: "/usr/local/fworch"
+billy_home: "/usr/local/billy"
 dotnet_mode: "Release"
 product_version: 5.1
 
@@ -43,13 +43,13 @@ api_uri: "https://127.0.0.1:9443/api/v1/graphql"
 api_hasura_jwt_alg: "RS256"
 
 # middleware
-middleware_JWT_key_file: "/usr/local/fworch/etc/secrets/jwt_private_key.pem"
+middleware_JWT_key_file: "/usr/local/billy/etc/secrets/jwt_private_key.pem"
 middleware_uri: "http://127.0.0.1:8880/"
 middleware_native_uri: "http://127.0.0.1:8880/"
 
 ```
 
-### test /etc/fworch/secrets/jwt_private_key.pem 
+### test /etc/billy/secrets/jwt_private_key.pem 
 ```console
 -----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQgsA0KrEllrMG
@@ -80,7 +80,7 @@ CtMKWsucknr8NZfqU0LLrJG2J3jJjbefqJtrWRdfMkJLPfOEutEag5IvTGtupg2V
 O0MsC4bS3CBU5rJuC0ld584=
 -----END PRIVATE KEY-----
 ```
-### test /etc/fworch/secrets/jwt_public_key.pem 
+### test /etc/billy/secrets/jwt_public_key.pem 
 ```console
 -----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0ILANCqxJZazBoskdWdx
@@ -110,7 +110,7 @@ aQIDAQAB
 
 simply install role webhook plus
 - double-check that a) ssl is not checked if not using properly signed cert and b) Content type of the webhook call is set to application/json
-- create secrets file ~/fworch-webhook.secret containing webhook secret
+- create secrets file ~/billy-webhook.secret containing webhook secret
 - copy ssh private key for deployment to ~/.ssh/id_github_deploy
 
 

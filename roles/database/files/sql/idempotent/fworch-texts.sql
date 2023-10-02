@@ -105,8 +105,8 @@ INSERT INTO txt VALUES ('settings', 			'German',	'Einstellungen');
 INSERT INTO txt VALUES ('settings', 			'English',	'Settings');
 INSERT INTO txt VALUES ('monitoring', 			'German',	'Monitoring');
 INSERT INTO txt VALUES ('monitoring', 			'English',	'Monitoring');
-INSERT INTO txt VALUES ('fworch_long',			'German',	'Firewall&nbsp;Orchestrator');
-INSERT INTO txt VALUES ('fworch_long',			'English',	'Firewall&nbsp;Orchestrator');
+INSERT INTO txt VALUES ('billy_long',			'German',	'Firewall&nbsp;Orchestrator');
+INSERT INTO txt VALUES ('billy_long',			'English',	'Firewall&nbsp;Orchestrator');
 INSERT INTO txt VALUES ('help',					'German',	'Hilfe');
 INSERT INTO txt VALUES ('help', 				'English',	'Help');
 INSERT INTO txt VALUES ('logout', 				'German',	'Abmelden');
@@ -153,8 +153,8 @@ INSERT INTO txt VALUES ('whats_new_facts',	    'German', 	'
     <li>Importer Check Point: Grundlegender Inline-Layer-Support</li>
     <li>Importer Modul f&uuml;r Stand-Alone FortiGate Import via REST API</li>
     <li>Firewall-Regel-Rezertifizierungsmodul: beseitigen Sie ihre Altlasten und erf&uuml;llen Sie aktuelle regulatorische Anforderungen.</li>
-    <li>Details: siehe <a target="_blank" href="https://github.com/CactuseSecurity/firewall-orchestrator/tree/main/documentation/revision-history-main.md">
-        https://github.com/CactuseSecurity/firewall-orchestrator/tree/main/documentation/revision-history-main.md</li>
+    <li>Details: siehe <a target="_blank" href="https://github.com/CactuseSecurity/billy/tree/main/documentation/revision-history-main.md">
+        https://github.com/CactuseSecurity/billy/tree/main/documentation/revision-history-main.md</li>
 </ul>
 ');
 INSERT INTO txt VALUES ('whats_new_facts',	    'English', 	'
@@ -165,8 +165,8 @@ INSERT INTO txt VALUES ('whats_new_facts',	    'English', 	'
     <li>Importer Check Point: basic inline layer support</li>
     <li>Importer: Module for stand-alone FortiGate import via REST API</li>
     <li>Rule recertification module: remove unnecessary rules and meet current regulatory requirements.</li>
-    <li>Details: see <a target="_blank" href="https://github.com/CactuseSecurity/firewall-orchestrator/tree/main/documentation/revision-history-main.md">
-        https://github.com/CactuseSecurity/firewall-orchestrator/tree/main/documentation/revision-history-main.md</li>
+    <li>Details: see <a target="_blank" href="https://github.com/CactuseSecurity/billy/tree/main/documentation/revision-history-main.md">
+        https://github.com/CactuseSecurity/billy/tree/main/documentation/revision-history-main.md</li>
 </ul>
 ');
 
@@ -217,11 +217,11 @@ M&ouml;chten Sie einen Supportvertrag abschlie&szlig;en, um in den Genuss folgen
 </ul>
 Folgende Kontaktm&ouml;glichkeiten stehen Ihnen zur Verf&uuml;gung:
 <ul>
-    <li><a href="https://github.com/CactuseSecurity/firewall-orchestrator/issues/new?assignees=&labels=&template=feature_request.md&title=">Feature request auf Github</a></li>
+    <li><a href="https://github.com/CactuseSecurity/billy/issues/new?assignees=&labels=&template=feature_request.md&title=">Feature request auf Github</a></li>
     <li>Telefon: <a href="tel:+496996233675">+49 69 962336-75</a></li>
     <li>Email: <a href="mailto:support@cactus.de">support@cactus.de</a></li>
-    <li>Chat: <a href="https://fworch.cactus.de/chat">Support-Chat</a></li>
-    <li>Video/Audio-Call (nach Vereinbarung): <a href="https://conf.cactus.de/fworch">https://conf.cactus.de/fworch</a></li>
+    <li>Chat: <a href="https://billy.cactus.de/chat">Support-Chat</a></li>
+    <li>Video/Audio-Call (nach Vereinbarung): <a href="https://conf.cactus.de/billy">https://conf.cactus.de/billy</a></li>
 </ul>
 ');
 INSERT INTO txt VALUES ('support_details',	    'English', 	'
@@ -233,11 +233,11 @@ Do you wish to get a support contract for the following benefits?
 </ul>
 Choose from the following contact options:
 <ul>
-    <li><a href="https://github.com/CactuseSecurity/firewall-orchestrator/issues/new?assignees=&labels=&template=feature_request.md&title=">Open a feature request on Github</a></li>
+    <li><a href="https://github.com/CactuseSecurity/billy/issues/new?assignees=&labels=&template=feature_request.md&title=">Open a feature request on Github</a></li>
     <li>Phone: <a href="tel:+496996233675">+49 69 962336-75</a></li>
     <li>Email: <a href="mailto:support@cactus.de">support@cactus.de</a> </li>
-    <li>Chat: <a href="https://fworch.cactus.de/chat">Support chat</a></li>
-    <li>Video/Audio Call (contact us to arrange a time slot): <a href="https://conf.cactus.de/fworch">https://conf.cactus.de/fworch</a></li>
+    <li>Chat: <a href="https://billy.cactus.de/chat">Support chat</a></li>
+    <li>Video/Audio Call (contact us to arrange a time slot): <a href="https://conf.cactus.de/billy">https://conf.cactus.de/billy</a></li>
 </ul>
 ');
 
@@ -3202,8 +3202,8 @@ Ein L&ouml;schen ist erst m&ouml;glich, wenn die Zugangsdaten nirgends mehr verw
     F&uuml;r den FortiGate Stand-Alone Import via REST API: 
     <ol>
         <li>Im FortiGate Web Interface: Erstelle ein Read Only Admin Profile z.B. "ro_admin"</li>
-        <li>Im FortiGate Web Interface: Erstelle einen "REST API Admin" e.g. "fworch" mit "ro_admin" Profil und kopiere den API Schl&uuml;ssel</li>
-        <li>In der Firewall Orchestrator WebUI: erstelle neue Import Login-Daten mit username "fworch" und Passwort = API Schl&uuml;ssel</li>
+        <li>Im FortiGate Web Interface: Erstelle einen "REST API Admin" e.g. "billy" mit "ro_admin" Profil und kopiere den API Schl&uuml;ssel</li>
+        <li>In der Firewall Orchestrator WebUI: erstelle neue Import Login-Daten mit username "billy" und Passwort = API Schl&uuml;ssel</li>
     </ol>
 ');
 INSERT INTO txt VALUES ('H5130', 'English', 'Manage credentials for importing firewall configuration data.
@@ -3213,8 +3213,8 @@ Credentials can only be deleted when they are not used for importing any managem
     For FortiGate stand-alone import via REST API:
     <ol>
         <li>In FortiGate Web UI: Create Read Only Admin Profile e.g. "ro_admin"</li>
-        <li>In FortiGate Web UI: Create new "REST API Admin" e.g. "fworch" with "ro_admin" profile and copy API key</li>
-        <li>In Firewall Orchestrator UI create new credentials with username "fworch" and password = API key</li>
+        <li>In FortiGate Web UI: Create new "REST API Admin" e.g. "billy" with "ro_admin" profile and copy API key</li>
+        <li>In Firewall Orchestrator UI create new credentials with username "billy" and password = API key</li>
     </ol>
 ');
 INSERT INTO txt VALUES ('H5131', 'German',  'Name*: Ein beliebiger Name, der diese Zugangsdaten eindeutig beschreibt.

@@ -18,7 +18,7 @@ ExecStart={{ ui_start_dir }}/bin/{{ dotnet_mode }}/net{{ dotnet_version }}/FWO.U
 #StandardOutput=syslog
 #StandardError=syslog
 SyslogIdentifier={{ ui_syslog_id }}
-User={{ fworch_user }}
+User={{ billy_user }}
 Environment=
 [Install]
 WantedBy=multi-user.target

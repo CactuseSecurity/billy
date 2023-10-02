@@ -20,4 +20,4 @@ in case of a conflict (if you use the 172.16.0.0/16 range internally), you can u
 
 3. restart docker container:
 
-```sudo docker restart fworch-api```
+```sudo docker restart billy-api```

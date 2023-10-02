@@ -13,7 +13,7 @@ Also have a look at
   - For an example see <https://dev.to/lineup-ninja/modelling-teams-and-user-security-with-hasura-204i>
   - see [hasura doc on auth](https://hasura.io/docs/1.0/graphql/manual/auth/authorization/roles-variables.html)
 
-![Auth process overview](fworch-auth-process.png)
+![Auth process overview](billy-auth-process.png)
 
 ## Roles
 

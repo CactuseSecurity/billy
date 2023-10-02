@@ -1,4 +1,4 @@
-# Creating a new FWORCH version
+# Creating a new billy version
 
 ## When a new version is necessary
 if you make any changes to

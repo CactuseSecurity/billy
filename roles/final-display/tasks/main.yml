@@ -1,6 +1,6 @@
 
 - name: show listener status
-  import_tasks: scripts/show-fworch-listeners.yml
+  import_tasks: scripts/show-billy-listeners.yml
   become: true
 
 - name: display secrets for this installation

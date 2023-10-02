@@ -6,8 +6,8 @@ import argparse
 parser = argparse.ArgumentParser(description='Create configuration from Check Point R8x management via API calls')
 parser.add_argument('hostname', metavar='api_host', help='Check Point R8x management server')
 parser.add_argument('password', metavar='api_password', help='password for management server')
-parser.add_argument('-u', '--user', metavar='api_user', default='fworch',
-                    help='user for connecting to Check Point R8x management server, default=fworch')
+parser.add_argument('-u', '--user', metavar='api_user', default='billy',
+                    help='user for connecting to Check Point R8x management server, default=billy')
 parser.add_argument('-p', '--port', metavar='api_port', default='443',
                     help='port for connecting to Check Point R8x management server, default=443')
 parser.add_argument('-l', '--layer', metavar='policy_layer_name(s)', required=True,
@@ -15,7 +15,7 @@ parser.add_argument('-l', '--layer', metavar='policy_layer_name(s)', required=Tr
 parser.add_argument('-n', '--number_of_test_objs', metavar='number_of_objs_to_create', default=3,
                     help='How many objects and rules to generate; default=3')
 parser.add_argument('-d', '--delete_all_test_data', action="store_true",
-                    help='delete all test data (all objects and rules with name fworch_test_*')
+                    help='delete all test data (all objects and rules with name billy_test_*')
 args = parser.parse_args()
 
 api_host = args.hostname
@@ -25,7 +25,7 @@ limit = 100
 details_level = "full"  # 'standard'
 ssl_verification = False
 use_object_dictionary = 'false'
-name_prefix = 'fworch_test_'
+name_prefix = 'billy_test_'
 obj_types = ['hosts', 'networks', 'services-tcp']
 base_ip = '10.88.99.'
 

@@ -9,7 +9,7 @@ namespace FWO.Test
     [Parallelizable]
     public class LockTest
     {
-        private string lockFilePath = $"/var/fworch/lock/{Assembly.GetEntryAssembly()?.GetName().Name}_log.lock";
+        private string lockFilePath = $"/var/billy/lock/{Assembly.GetEntryAssembly()?.GetName().Name}_log.lock";
         private static Random random = new Random();
 
         [SetUp]

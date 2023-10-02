@@ -3,8 +3,8 @@
   copy:
     src: FWO.Test
     dest: "{{ test_dir }}/csharp"
-    owner: "{{ fworch_user }}"
-    group: "{{ fworch_group }}"
+    owner: "{{ billy_user }}"
+    group: "{{ billy_group }}"
   become: true
 
 - name: csharp tests
@@ -12,7 +12,7 @@
   args:
     chdir: "{{ csharp_test_start_dir }}"
   become: true
-  become_user: "{{ fworch_user }}"
+  become_user: "{{ billy_user }}"
   register: csharp_tests
   ignore_errors: false
   environment: "{{ proxy_env }}"

@@ -3,16 +3,16 @@
 # 
 import sys
 import json, requests, requests.packages, argparse
-base_dir = "/usr/local/fworch"
+base_dir = "/usr/local/billy"
 importer_base_dir = base_dir + '/importer'
 sys.path.append(importer_base_dir)
 import common_scripts, fwo_api
 
 parser = argparse.ArgumentParser(
-    description='Export fworch configuration into encrypted json file')
+    description='Export billy configuration into encrypted json file')
 parser.add_argument('-i', '--input_file', metavar='input_file', required=True, help='filename to read the config to import from')
-parser.add_argument('-u', '--user', metavar='user_name', default='admin', help='username for writing fworch config (default=admin')
-parser.add_argument('-p', '--password', metavar='password_file', default=base_dir + '/etc/secrets/ui_admin_pwd', help='username for writing fworch config (default=$FWORCH_HOME/etc/secrets/ui_admin_pwd')
+parser.add_argument('-u', '--user', metavar='user_name', default='admin', help='username for writing billy config (default=admin')
+parser.add_argument('-p', '--password', metavar='password_file', default=base_dir + '/etc/secrets/ui_admin_pwd', help='username for writing billy config (default=$billy_HOME/etc/secrets/ui_admin_pwd')
 parser.add_argument('-d', '--debug', metavar='debug_level', default='0',
                     help='Debug Level: 0=off, 1=send debug to console, 2=send debug to file, 3=keep temporary config files; default=0')
 parser.add_argument('-s', '--ssl', metavar='ssl_verification_mode', default='',
@@ -23,7 +23,7 @@ if len(sys.argv) == 1:
     parser.print_help(sys.stderr)
     sys.exit(1)
 
-fwo_config_filename = base_dir + '/etc/fworch.json'
+fwo_config_filename = base_dir + '/etc/billy.json'
 debug_level = int(args.debug)
 common_scripts.set_log_level(log_level=debug_level, debug_level=debug_level)
 

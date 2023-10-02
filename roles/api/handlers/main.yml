@@ -1,8 +1,8 @@
 ---
 - name: recover backup
   synchronize:
-    src: "{{ fworch_home }}/backup_api/api"
-    dest: "{{ fworch_home }}"
+    src: "{{ billy_home }}/backup_api/api"
+    dest: "{{ billy_home }}"
   delegate_to: "{{ inventory_hostname }}"
   listen: "api handler"
   when: api_handler_guard == "start"
@@ -11,7 +11,7 @@
 - name: delete backup
   file:
     state: absent
-    path: "{{ fworch_home }}/backup_api"
+    path: "{{ billy_home }}/backup_api"
   listen: "api handler"
   become: true
 

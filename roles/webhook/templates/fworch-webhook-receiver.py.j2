@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # source: https://github.com/Esri/webhooks-samples/tree/master/python/receiver/flask
 
-# starting with: python3 {{ fworchtest_home }}/fworch-webhook-receiver.py
+# starting with: python3 {{ billytest_home }}/billy-webhook-receiver.py
 # in github settings webhook:
 #   https://cactus.de:{{ webhook_port }}/fwo
 #   content-type: application/json
@@ -21,10 +21,10 @@ import re
 import hmac
 import hashlib
 
-root_dir = '{{ fworchtest_home }}/'
+root_dir = '{{ billytest_home }}/'
 tmp_git_dir = root_dir + 'tmp_git'
 github_hostname = "github.com"
-project_path = '/CactuseSecurity/firewall-orchestrator.git'
+project_path = '/CactuseSecurity/billy.git'
 # ssh_priv_key_file = root_dir + '.ssh/id_github_deploy'
 webhook_log_file_basename = 'webhookPayloads.txt'
 webhook_logfile = root_dir + webhook_log_file_basename
@@ -38,7 +38,7 @@ app = Flask(__name__)
 
 @app.route('/fwo', methods=['GET'])
 def get_handler():
-   webpage = '<h1>fworch test server webhook listener</h1>\n'
+   webpage = '<h1>billy test server webhook listener</h1>\n'
    f = open(webhook_logfile,'r')
    str = f.read()
    f.close()
@@ -61,7 +61,7 @@ def post_handler():
    payload = request.data
 
    # verify signature of post request from github hook
-   with open(os.path.expanduser('~/fworch-webhook.secret'), 'r') as secret_file:
+   with open(os.path.expanduser('~/billy-webhook.secret'), 'r') as secret_file:
       webhook_secret = secret_file.read().replace("\n", "")
       secret = webhook_secret.encode() # must be encoded to a byte array
       # contruct hmac generator with our secret as key, and SHA-1 as the hashing function
@@ -89,7 +89,7 @@ def post_handler():
             for modified_file in modified_files:
                if (re.match(pattern, modified_file)):
                   relevant_change = True
-            pattern = '^scripts\/fworch-webhook-receiver.py$'
+            pattern = '^scripts\/billy-webhook-receiver.py$'
             webhook_script_changed = False
             for modified_file in modified_files:
                if (re.match(pattern, modified_file)):
@@ -105,21 +105,21 @@ def post_handler():
                f.write('executing ' + clone_cmd + '\n')
                os.system(clone_cmd) # Cloning
                if (webhook_script_changed):
-                  os.system("cp " + tmp_git_dir + "/firewall-orchestrator/scripts/fworch-webhook-receiver.py " + root_dir)
+                  os.system("cp " + tmp_git_dir + "/billy/scripts/billy-webhook-receiver.py " + root_dir)
                   # might not work due to user rights:
-                  # os.system("systemctl restart fworch-webhook-receiver.service")
+                  # os.system("systemctl restart billy-webhook-receiver.service")
 {% if webhook_install_mode == 'reinstall' %}
-               uninstall_cmd = "cd " + tmp_git_dir + "/firewall-orchestrator && ansible-playbook site.yml -e \"installation_mode=uninstall " + prox + "\""
+               uninstall_cmd = "cd " + tmp_git_dir + "/billy && ansible-playbook site.yml -e \"installation_mode=uninstall " + prox + "\""
                f.write('executing uninstall command: ' + uninstall_cmd + '\n')
-               os.system(uninstall_cmd) # remove fworch
+               os.system(uninstall_cmd) # remove billy
                # fresh install: 
-               build_cmd = "cd " + tmp_git_dir + "/firewall-orchestrator && ansible-playbook site.yml -e \"testkeys=yes installation_mode=new " + prox + "\""
+               build_cmd = "cd " + tmp_git_dir + "/billy && ansible-playbook site.yml -e \"testkeys=yes installation_mode=new " + prox + "\""
 {% else %}
                # upgrade 
-               build_cmd = "cd " + tmp_git_dir + "/firewall-orchestrator && ansible-playbook site.yml -e \"testkeys=yes installation_mode=upgrade " + prox + "\""
+               build_cmd = "cd " + tmp_git_dir + "/billy && ansible-playbook site.yml -e \"testkeys=yes installation_mode=upgrade " + prox + "\""
 {% endif %}
                f.write('executing build command: ' + build_cmd + '\n')
-               os.system(build_cmd) # building fworch
+               os.system(build_cmd) # building billy
                now = datetime.now() # current date and time
                f.write('--- build completed '+ now.strftime("%Y-%m-%d %H:%M:%S") +' ---\n')
             else:

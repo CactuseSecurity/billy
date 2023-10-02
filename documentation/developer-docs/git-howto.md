@@ -14,7 +14,7 @@ Add ssh key to profile (Profile - Settings - ssh keys)
 
 ## add upstream URL (only has to be done once)
 
-    git remote add upstream https://github.com/CactuseSecurity/firewall-orchestrator.git
+    git remote add upstream https://github.com/CactuseSecurity/billy.git
 
 ### Sync with upstream
 
@@ -34,16 +34,16 @@ Add ssh key to profile (Profile - Settings - ssh keys)
 
 ### Working via ssh
 
-    git remote add upstream ssh://github.com:CactuseSecurity/firewall-orchestrator.git
+    git remote add upstream ssh://github.com:CactuseSecurity/billy.git
 
 ### Change upstream name
-    git remote set-url upstream ssh://github.com:CactuseSecurity/firewall-orchestrator.git
+    git remote set-url upstream ssh://github.com:CactuseSecurity/billy.git
 
 ## Example with non-master branch
 
-       git clone git@github.com:tpurschke/firewall-orchestrator.git -b tim/make-api-reinstallable
-       cd firewall-orchestrator/
-       git remote add upstream git@github.com:CactuseSecurity/firewall-orchestrator.git
+       git clone git@github.com:tpurschke/billy.git -b tim/make-api-reinstallable
+       cd billy/
+       git remote add upstream git@github.com:CactuseSecurity/billy.git
        git fetch upstream
        git checkout tim/make-api-reinstallable
        git merge upstream/tim/make-api-reinstallable
@@ -55,22 +55,22 @@ How to merge fork tpurschke/master into CactuseSecurity/master
 
 1. get fork to merge
 
-       git clone git@github.com:tpurschke/firewall-orchestrator.git -b master
+       git clone git@github.com:tpurschke/billy.git -b master
 
    if you need to acces a "foreign" fork where you do not have access via ssh, use something like:
 
-       git clone https://github.com/dos-box/firewall-orchestrator.git
+       git clone https://github.com/dos-box/billy.git
 
 2. change into repo and check out the correct branch or commit via its hash
 
-       cd firewall-orchestrator
+       cd billy
        a) git checkout b77e63e6e4e315164029ff20d2096ba75fd150d2
        b) git checkout testbranch123
        c) git checkout master
 
 3. add remote upstream repo
 
-       git remote add upstream https://github.com/CactuseSecurity/firewall-orchestrator.git
+       git remote add upstream https://github.com/CactuseSecurity/billy.git
        git fetch upstream
 
 4. merge
@@ -98,12 +98,12 @@ How to merge fork tpurschke/master into CactuseSecurity/master
 1. create branch in main repo cactus via github WebUI
 2. go into local repo linked to both upsteam cactus and own fork and check links:
 
-        tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/firewall-orchestrator$ git remote -v
-        origin git@github.com:tpurschke/firewall-orchestrator.git (fetch)
-        origin git@github.com:tpurschke/firewall-orchestrator.git (push)
-        upstream-cactus git@github.com:CactuseSecurity/firewall-orchestrator.git (fetch)
-        upstream-cactus git@github.com:CactuseSecurity/firewall-orchestrator.git (push)
-        tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/firewall-orchestrator
+        tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/billy$ git remote -v
+        origin git@github.com:tpurschke/billy.git (fetch)
+        origin git@github.com:tpurschke/billy.git (push)
+        upstream-cactus git@github.com:CactuseSecurity/billy.git (fetch)
+        upstream-cactus git@github.com:CactuseSecurity/billy.git (push)
+        tim@acantha:~/VisualStudioCodeProjects/fwo-tpurschke/billy
 
 3. fetch new branch into local repo:
 
