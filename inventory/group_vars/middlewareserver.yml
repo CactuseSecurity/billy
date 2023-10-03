@@ -17,7 +17,6 @@ middleware_server_base_dir: "{{ billy_home }}/middleware/files"
 middleware_server_start_dir: "{{ middleware_server_base_dir }}/billy.Middleware.Server"
 middleware_ldif_dir: "{{ billy_home }}/etc/ldif"
 
-importer_password: not4production
 apache_mw_timeout: 14400
 
 # use static jwt generation test key if set to yes

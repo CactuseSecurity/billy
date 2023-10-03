@@ -362,11 +362,11 @@ namespace billy.Middleware.Controllers
 
             var tenIdObj = new { tenantId = tenant.Id };
 
-            Device[] deviceIds = await apiConnection.SendQueryAsync<Device[]>(AuthQueries.getVisibleDeviceIdsPerTenant, tenIdObj, "getVisibleDeviceIdsPerTenant");
-            tenant.VisibleDevices = Array.ConvertAll(deviceIds, device => device.Id);
+            // Device[] deviceIds = await apiConnection.SendQueryAsync<Device[]>(AuthQueries.getVisibleDeviceIdsPerTenant, tenIdObj, "getVisibleDeviceIdsPerTenant");
+            // tenant.VisibleDevices = Array.ConvertAll(deviceIds, device => device.Id);
 
-            Management[] managementIds = await apiConnection.SendQueryAsync<Management[]>(AuthQueries.getVisibleManagementIdsPerTenant, tenIdObj, "getVisibleManagementIdsPerTenant");
-            tenant.VisibleManagements = Array.ConvertAll(managementIds, management => management.Id);
+            // Management[] managementIds = await apiConnection.SendQueryAsync<Management[]>(AuthQueries.getVisibleManagementIdsPerTenant, tenIdObj, "getVisibleManagementIdsPerTenant");
+            // tenant.VisibleManagements = Array.ConvertAll(managementIds, management => management.Id);
 
             return tenant;
         }

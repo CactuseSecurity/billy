@@ -38,21 +38,33 @@
                 {
                   "role": "anonymous",
                   "permission": {
-                    "columns": ["config_key", "config_value", "config_user"],
+                    "columns": [
+                      "config_key",
+                      "config_value",
+                      "config_user"
+                    ],
                     "filter": {}
                   }
                 },
                 {
                   "role": "middleware-server",
                   "permission": {
-                    "columns": ["config_key", "config_value", "config_user"],
+                    "columns": [
+                      "config_key",
+                      "config_value",
+                      "config_user"
+                    ],
                     "filter": {}
                   }
                 },
                 {
                   "role": "middlewareserver",
                   "permission": {
-                    "columns": ["config_key", "config_value", "config_user"],
+                    "columns": [
+                      "config_key",
+                      "config_value",
+                      "config_user"
+                    ],
                     "filter": {}
                   }
                 }
@@ -79,9 +91,22 @@
               },
               "select_permissions": [
                 {
+                  "role": "anonymous",
+                  "permission": {
+                    "columns": [
+                      "culture_info",
+                      "name"
+                    ],
+                    "filter": {}
+                  }
+                },
+                {
                   "role": "middleware-server",
                   "permission": {
-                    "columns": ["culture_info", "name"],
+                    "columns": [
+                      "culture_info",
+                      "name"
+                    ],
                     "filter": {}
                   }
                 }
@@ -213,14 +238,22 @@
                 {
                   "role": "anonymous",
                   "permission": {
-                    "columns": ["id", "language", "txt"],
+                    "columns": [
+                      "id",
+                      "language",
+                      "txt"
+                    ],
                     "filter": {}
                   }
                 },
                 {
                   "role": "middlewareserver",
                   "permission": {
-                    "columns": ["id", "language", "txt"],
+                    "columns": [
+                      "id",
+                      "language",
+                      "txt"
+                    ],
                     "filter": {}
                   }
                 }

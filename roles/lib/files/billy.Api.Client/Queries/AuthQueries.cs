@@ -23,7 +23,6 @@ namespace billy.Api.Client.Queries
         public static readonly string updateUserPasswordChange;
         public static readonly string deleteUser;
         public static readonly string assertUserExists;
-        public static readonly string getVisibleDeviceIdsPerTenant;
         public static readonly string getVisibleManagementIdsPerTenant;
         public static readonly string getLdapConnections;
         public static readonly string getAllLdapConnections;
@@ -43,7 +42,6 @@ namespace billy.Api.Client.Queries
                 deleteTenant = File.ReadAllText(QueryPath + "auth/deleteTenant.graphql");
                 addDeviceToTenant = File.ReadAllText(QueryPath + "auth/addDeviceToTenant.graphql");
                 deleteDeviceFromTenant = File.ReadAllText(QueryPath + "auth/deleteDeviceFromTenant.graphql");
-                getVisibleDeviceIdsPerTenant = File.ReadAllText(QueryPath + "auth/getVisibleDeviceIdsPerTenant.graphql");
                 getVisibleManagementIdsPerTenant = File.ReadAllText(QueryPath + "auth/getVisibleManagementIdsPerTenant.graphql");
                 getLdapConnections = File.ReadAllText(QueryPath + "auth/getLdapConnections.graphql");
                 getAllLdapConnections = File.ReadAllText(QueryPath + "auth/getAllLdapConnections.graphql");

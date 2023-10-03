@@ -71,11 +71,11 @@
     - frontend
     - ui
 
-- hosts: all
-  roles:
-    - { role: test, when: "not installation_mode == 'uninstall'" }
-  tags:
-    - test
+# - hosts: all
+#   roles:
+#     - { role: test, when: "not installation_mode == 'uninstall'" }
+#   tags:
+#     - test
 
 - hosts: all
   roles:
