@@ -38,33 +38,21 @@
                 {
                   "role": "anonymous",
                   "permission": {
-                    "columns": [
-                      "config_key",
-                      "config_value",
-                      "config_user"
-                    ],
+                    "columns": ["config_key", "config_value", "config_user"],
                     "filter": {}
                   }
                 },
                 {
                   "role": "middleware-server",
                   "permission": {
-                    "columns": [
-                      "config_key",
-                      "config_value",
-                      "config_user"
-                    ],
+                    "columns": ["config_key", "config_value", "config_user"],
                     "filter": {}
                   }
                 },
                 {
                   "role": "middlewareserver",
                   "permission": {
-                    "columns": [
-                      "config_key",
-                      "config_value",
-                      "config_user"
-                    ],
+                    "columns": ["config_key", "config_value", "config_user"],
                     "filter": {}
                   }
                 }
@@ -93,20 +81,14 @@
                 {
                   "role": "anonymous",
                   "permission": {
-                    "columns": [
-                      "culture_info",
-                      "name"
-                    ],
+                    "columns": ["culture_info", "name"],
                     "filter": {}
                   }
                 },
                 {
                   "role": "middleware-server",
                   "permission": {
-                    "columns": [
-                      "culture_info",
-                      "name"
-                    ],
+                    "columns": ["culture_info", "name"],
                     "filter": {}
                   }
                 }
@@ -227,7 +209,26 @@
               "table": {
                 "name": "tenant",
                 "schema": "public"
-              }
+              },
+              "select_permissions": [
+                {
+                  "role": "middleware-server",
+                  "permission": {
+                    "columns": [
+                      "tenant_id",
+                      "tenant_name",
+                      "tenant_projekt",
+                      "tenant_comment",
+                      "tenant_report",
+                      "tenant_can_view_all_devices",
+                      "tenant_is_superadmin",
+                      "tenant_create"
+                    ],
+                    "filter": {}
+                  },
+                  "comment": ""
+                }
+              ]
             },
             {
               "table": {
@@ -238,22 +239,7 @@
                 {
                   "role": "anonymous",
                   "permission": {
-                    "columns": [
-                      "id",
-                      "language",
-                      "txt"
-                    ],
-                    "filter": {}
-                  }
-                },
-                {
-                  "role": "middlewareserver",
-                  "permission": {
-                    "columns": [
-                      "id",
-                      "language",
-                      "txt"
-                    ],
+                    "columns": ["id", "language", "txt"],
                     "filter": {}
                   }
                 }
@@ -352,9 +338,17 @@
           ],
           "configuration": {
             "connection_info": {
-              "database_url": "postgresql://dbadmin:POyygQiuLkZmXpwNcZEVptDfkIBQyvFp@127.0.0.1:5432/billydb",
+              "database_url": {
+                "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+              },
               "isolation_level": "read-committed",
-              "use_prepared_statements": false
+              "pool_settings": {
+                "connection_lifetime": 600,
+                "idle_timeout": 180,
+                "max_connections": 50,
+                "retries": 1
+              },
+              "use_prepared_statements": true
             }
           }
         }

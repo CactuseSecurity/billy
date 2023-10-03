@@ -25,31 +25,10 @@
                     </a>
                 </li>
             </AuthorizeView>
-            <AuthorizeView Roles="admin, requester, fw-admin, auditor, approver, planner, implementer, reviewer">
-                <li class="nav-item px-2">
-                    <NavLink class="nav-link" href="@firstPage">
-                        <span class="oi oi-comment-square"></span> @(userConfig.GetText("workflow"))
-                    </NavLink>
-                </li>
-            </AuthorizeView>
-            <AuthorizeView Roles="admin, recertifier, auditor">
-                <li class="nav-item px-2">
-                    <NavLink class="nav-link" href="/certification">
-                        <span class="oi oi-badge"></span> @(userConfig.GetText("recertification"))
-                    </NavLink>
-                </li>
-            </AuthorizeView>
             <AuthorizeView Roles="admin, fw-admin, planner, auditor">
                 <li class="nav-item px-2">
                     <NavLink class="nav-link" href="/network_analysis">
                         <span class="oi oi-spreadsheet"></span> @(userConfig.GetText("network_analysis"))
-                    </NavLink>
-                </li>
-            </AuthorizeView>
-            <AuthorizeView Roles="admin, requester, fw-admin, auditor, approver, planner, implementer, reviewer, reporter-viewall">
-                <li class="nav-item px-2">
-                    <NavLink class="nav-link" href="/compliance/zones/configuration">
-                        <span class="oi oi-dashboard"></span> @(userConfig.GetText("compliance"))
                     </NavLink>
                 </li>
             </AuthorizeView>
@@ -104,32 +83,6 @@
     protected override void OnInitialized()
     {
         userConfig.OnChange += OnChange;
-        if(authenticationStateTask!.Result.User.IsInRole("admin") || 
-            authenticationStateTask!.Result.User.IsInRole("fw-admin") ||
-            authenticationStateTask!.Result.User.IsInRole("auditor"))
-        {
-            firstPage = "/request/ticketsoverview";
-        }
-        else if(authenticationStateTask!.Result.User.IsInRole("requester"))
-        {
-            firstPage = "/request/tickets";
-        }
-        else if(authenticationStateTask!.Result.User.IsInRole("approver"))
-        {
-            firstPage = "/request/approvals";
-        }
-        else if(authenticationStateTask!.Result.User.IsInRole("planner"))
-        {
-            firstPage = "/request/plannings";
-        }
-        else if(authenticationStateTask!.Result.User.IsInRole("implementer"))
-        {
-            firstPage = "/request/implementations";
-        }
-        else
-        {
-            firstPage = "/request/reviews";
-        }
     }
 
     void ToggleNavMenu()

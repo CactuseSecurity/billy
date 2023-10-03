@@ -64,7 +64,6 @@ namespace billy.Ui
             services.AddSingleton<GlobalConfig>(_ => globalConfig);    
             services.AddScoped<UserConfig>(_ => new UserConfig(globalConfig));
 
-            services.AddScoped(_ => new NetworkZoneService());
             services.AddScoped(_ => new DomEventService());
 
             services.AddBlazorTable();
